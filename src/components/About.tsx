@@ -1,46 +1,51 @@
-import { useState, useEffect, SetStateAction } from 'react';
-import { Target, Users, Award, Globe, Heart, Shield, Star, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Target, Users, Award, Globe, Heart, Shield, Star, ChevronLeft, ChevronRight, Play, Pause } from 'lucide-react';
 
 const About = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const slides = [
     {
       id: 1,
       title: "Qui sommes-nous ?",
       content: "MIMAP est un groupe de médecins généralistes et spécialistes dédiés à la médecine préventive, la santé au travail et la formation certifiée en premiers secours et RCR/CPR (réanimation cardio-pulmonaire).",
-      icon: <Users className="w-8 h-8 text-blue-600" />,
-      gradient: "from-blue-50 to-blue-100",
-      borderColor: "border-blue-600",
-      iconBg: "bg-blue-100"
+      icon: <Users className="w-6 h-6" />,
+      color: "blue",
+      bgGradient: "from-blue-500/10 to-cyan-500/10",
+      borderGradient: "from-blue-500 to-cyan-500",
+      glowColor: "blue-500/20"
     },
     {
       id: 2,
       title: "Notre Mission",
-      content: "Notre mission est de placer le bien-être des individus au cœur de toutes nos actions. Spécialistes dévoués à la santé et à la sérénité de toute la famille, quel que soit son âge, nous proposons des approches novatrices qui englobent à la fois les besoins familiaux et ceux des environnements professionnels.",
-      icon: <Heart className="w-8 h-8 text-green-600" />,
-      gradient: "from-green-50 to-green-100",
-      borderColor: "border-green-600",
-      iconBg: "bg-green-100"
+      content: "Notre mission est de placer le bien-être des individus au cœur de toutes nos actions. Spécialistes dévoués à la santé et à la sérénité de toute la famille, quel que soit son âge.",
+      icon: <Heart className="w-6 h-6" />,
+      color: "emerald",
+      bgGradient: "from-emerald-500/10 to-teal-500/10",
+      borderGradient: "from-emerald-500 to-teal-500",
+      glowColor: "emerald-500/20"
     },
     {
       id: 3,
-      title: "Notre équipe",
-      content: "Notre équipe d'experts, certifiée par des organismes internationaux tels que l'American Heart Association, s'engage à offrir des services de qualité supérieure afin de répondre aux défis uniques de la santé familiale et professionnelle. Nous croyons fermement que le bien-être individuel et collectif est la clé d'un avenir plus harmonieux et sûr.",
-      icon: <Target className="w-8 h-8 text-green-600" />,
-      gradient: "from-green-50 to-blue-100",
-      borderColor: "border-green-600",
-      iconBg: "bg-green-100"
+      title: "Notre Équipe",
+      content: "Notre équipe d'experts, certifiée par des organismes internationaux tels que l'American Heart Association, s'engage à offrir des services de qualité supérieure.",
+      icon: <Target className="w-6 h-6" />,
+      color: "violet",
+      bgGradient: "from-violet-500/10 to-purple-500/10",
+      borderGradient: "from-violet-500 to-purple-500",
+      glowColor: "violet-500/20"
     },
     {
       id: 4,
       title: "Nos Partenariats",
-      content: "🎯 Nous avons eu le privilège de collaborer avec des institutions prestigieuses comme la Banque mondiale et des compagnies majeures telles que Tasiast et Aura Energy. Ces partenariats renforcent notre mission : transformer les environnements familiaux et professionnels en espaces où la sécurité et la santé sont des priorités absolues.",
-      icon: <Award className="w-8 h-8 text-blue-900" />,
-      gradient: "from-blue-50 to-indigo-100",
-      borderColor: "border-blue-900",
-      iconBg: "bg-blue-200"
+      content: "Nous avons eu le privilège de collaborer avec des institutions prestigieuses comme la Banque mondiale et des compagnies majeures telles que Tasiast et Aura Energy.",
+      icon: <Award className="w-6 h-6" />,
+      color: "amber",
+      bgGradient: "from-amber-500/10 to-orange-500/10",
+      borderGradient: "from-amber-500 to-orange-500",
+      glowColor: "amber-500/20"
     }
   ];
 
@@ -61,7 +66,13 @@ const About = () => {
       observer.observe(section);
     }
 
+    // Auto-slide
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 5000);
+
     return () => {
+      clearInterval(interval);
       if (section) {
         observer.unobserve(section);
       }
@@ -76,181 +87,175 @@ const About = () => {
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
   };
 
-  const goToSlide = (index: SetStateAction<number>) => {
-    setCurrentSlide(index);
-  };
-
   return (
-    <section id="about" className="py-12 sm:py-16 md:py-20 lg:py-24 bg-gray-100 from-slate-50 via-blue-50 to-green-50 relative overflow-hidden min-h-screen">
-      {/* Formes décoratives animées améliorées */}
-      <div className="absolute top-0 right-0 w-40 h-40 sm:w-52 sm:h-52 md:w-64 md:h-64 lg:w-80 lg:h-80 bg-gradient-to-bl from-blue-200/40 via-indigo-100/30 to-green-200/40 rounded-full opacity-60 transform translate-x-1/3 -translate-y-1/3 animate-pulse hidden sm:block"></div>
-      <div className="absolute bottom-0 left-0 w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-64 lg:h-64 bg-gradient-to-tr from-green-200/40 via-blue-100/30 to-blue-200/40 rounded-full opacity-50 transform -translate-x-1/4 translate-y-1/4 animate-bounce hidden sm:block" style={{ animationDuration: '3s' }}></div>
-      <div className="absolute top-1/2 left-1/4 w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 bg-gradient-to-r from-blue-400 to-green-400 rounded-full opacity-40 animate-ping hidden md:block"></div>
-      <div className="absolute bottom-1/3 right-1/3 w-4 h-4 sm:w-6 sm:h-6 bg-gradient-to-r from-green-400 to-blue-400 rounded-full opacity-30 animate-pulse hidden lg:block"></div>
+    <section id="about" className="relative bg-gradient-to-br from-slate-50 via-white to-blue-50/30 overflow-hidden">
+      {/* Éléments décoratifs animés */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-blue-400/20 to-cyan-400/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-tr from-emerald-400/20 to-teal-400/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-1/3 left-1/3 w-32 h-32 bg-gradient-to-r from-violet-400/10 to-purple-400/10 rounded-full blur-2xl animate-bounce" style={{ animationDuration: '4s' }}></div>
+      </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
-        {/* En-tête de section amélioré */}
-        <div className="text-center mb-8 sm:mb-12 md:mb-16 lg:mb-20">
-          <div className={`inline-flex items-center bg-gradient-to-r from-blue-100 to-green-100 border border-blue-200/50 px-4 py-2 sm:px-6 sm:py-3 rounded-full mb-4 sm:mb-6 shadow-lg backdrop-blur-sm transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-10 opacity-0 scale-95'}`}>
-            <Heart className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 mr-2 animate-pulse" />
-            <span className="text-sm sm:text-base text-transparent bg-gradient-to-r from-blue-700 to-green-600 bg-clip-text font-bold">À Propos de MIMAP</span>
+      <div className="container mx-auto px-4 py-16 relative z-10">
+        {/* En-tête */}
+        <div className={`text-center mb-12 transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+           <div className="inline-flex items-center bg-blue-100 px-6 py-3 rounded-full mb-6 animate-fade-in">
+            <Heart className="w-5 h-5 text-blue-600 mr-2 animate-pulse" />
+            <span className="text-blue-700 font-semibold">A propos de MIMAP</span>
           </div>
-          <h2 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold bg-gradient-to-r from-blue-900 via-blue-800 to-green-700 bg-clip-text text-transparent mb-3 sm:mb-4 md:mb-6 leading-tight transform transition-all duration-1000 delay-200 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            Qui sommes-nous ?
+          
+          <h2 className="text-4xl md:text-4xl lg:text-6xl font-bold mb-6">
+            <span className="text-4xl md:text-5xl font-bold text-blue-900 mb-6 animate-slide-up">
+              Qui sommes nous ?
+            </span>
           </h2>
-          <p className={`text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed px-4 transform transition-all duration-1000 delay-400 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+          
+          <p className="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
             Votre partenaire de confiance pour la santé et le bien-être de toute la famille
           </p>
-          <div className={`w-16 sm:w-20 md:w-24 lg:w-32 h-1 bg-gradient-to-r from-blue-600 via-indigo-500 to-green-500 mx-auto mt-4 sm:mt-6 md:mt-8 rounded-full shadow-lg transform transition-all duration-1000 delay-600 ${isVisible ? 'scale-x-100 opacity-100' : 'scale-x-0 opacity-0'}`}></div>
         </div>
 
-        {/* Contenu principal - Layout responsive amélioré */}
-        <div className="flex flex-col xl:flex-row gap-6 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-16 items-stretch mb-8 sm:mb-12 md:mb-16 lg:mb-20">
-
-          {/* Carrousel - Responsive sizing */}
-          <div className={`w-full xl:w-2/5 xl:flex-shrink-0 transform transition-all duration-1000 delay-300 ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-10 opacity-0'}`}>
-            <div className="relative max-w-2xl mx-auto xl:mx-0 h-full">
-
-              {/* Conteneur des slides avec hauteur responsive */}
-              <div className="overflow-hidden rounded-2xl sm:rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500">
-                <div
-                  className="flex transition-transform duration-700 ease-in-out"
-                  style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-                >
-                  {slides.map((slide) => (
-                    <div key={slide.id} className="w-full flex-shrink-0">
-                      <div className={`bg-gradient-to-br ${slide.gradient} rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 h-72 sm:h-80 md:h-96 lg:h-[420px] flex flex-col border-2 ${slide.borderColor} shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-[1.02] relative overflow-hidden group`}>
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
-                        <div className="flex items-center mb-3 sm:mb-4 md:mb-6 relative z-10">
-                          <div className={`w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 ${slide.iconBg} rounded-xl flex items-center justify-center mr-3 sm:mr-4 shadow-lg transform group-hover:rotate-12 transition-transform duration-300`}>
-                            {slide.icon}
+        {/* Contenu principal en grille */}
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+          
+          {/* Colonne gauche - Carrousel */}
+          <div className={`transform transition-all duration-1000 delay-300 ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-10 opacity-0'}`}>
+            <div className="relative">
+              {/* Carrousel principal */}
+              <div className="relative overflow-hidden rounded-3xl bg-white/60 backdrop-blur-xl border border-white/50 shadow-2xl">
+                <div className="flex transition-transform duration-700 ease-out" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
+                  {slides.map((slide, index) => (
+                    <div key={slide.id} className="w-full flex-shrink-0 p-8 min-h-[400px]">
+                      <div className={`h-full bg-gradient-to-br ${slide.bgGradient} rounded-2xl p-6 border border-white/30 shadow-lg relative overflow-hidden group`}>
+                        {/* Effet de brillance */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                        
+                        {/* En-tête de slide */}
+                        <div className="flex items-center gap-4 mb-6 relative z-10">
+                          <div className={`w-12 h-12 rounded-2xl bg-gradient-to-r ${slide.borderGradient} p-3 shadow-lg transform group-hover:scale-110 transition-transform duration-300`}>
+                            <div className="text-white">
+                              {slide.icon}
+                            </div>
                           </div>
-                          <h4 className="text-base sm:text-lg md:text-xl font-bold text-blue-900 flex-1 leading-tight">
+                          <h3 className="text-xl font-bold text-slate-800">
                             {slide.title}
-                          </h4>
-                          <div className="w-2 h-2 sm:w-3 sm:h-3 bg-gradient-to-r from-blue-600 to-green-600 rounded-full animate-pulse"></div>
+                          </h3>
                         </div>
-                        <div className="flex-1 overflow-y-auto relative z-10 pr-1 sm:pr-2">
-                          <div className="space-y-2 sm:space-y-4">
-                            <p className="text-xs sm:text-sm md:text-base text-gray-700 leading-relaxed">
-                              {slide.content}
-                            </p>
-                          </div>
+                        
+                        {/* Contenu */}
+                        <div className="relative z-10">
+                          <p className="text-slate-700 leading-relaxed text-base">
+                            {slide.content}
+                          </p>
                         </div>
-                        <div className="absolute top-3 right-3 sm:top-4 sm:right-4 opacity-20 group-hover:opacity-40 transition-opacity duration-300">
-                          {slide.id === 1 && <Shield className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-blue-600 animate-pulse" />}
-                          {slide.id === 2 && <Star className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-green-600 animate-bounce" />}
-                          {slide.id === 3 && <Globe className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-green-600 animate-spin" style={{ animationDuration: '3s' }} />}
-                          {slide.id === 4 && <Award className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-blue-900 animate-pulse" />}
+                        
+                        {/* Numéro de slide */}
+                        <div className="absolute bottom-4 right-4 w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-sm font-bold text-slate-600">
+                          {slide.id}
                         </div>
                       </div>
                     </div>
                   ))}
                 </div>
               </div>
-
-              {/* Boutons de navigation améliorés */}
-              <button
-                onClick={prevSlide}
-                className="hidden lg:flex absolute -left-4 xl:-left-6 top-1/2 transform -translate-y-1/2 z-10 w-10 h-10 xl:w-12 xl:h-12 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full shadow-xl items-center justify-center hover:from-blue-700 hover:to-blue-800 transition-all duration-300 hover:scale-110 group backdrop-blur-sm"
-              >
-                <ChevronLeft className="w-5 h-5 xl:w-6 xl:h-6 text-white transform group-hover:-translate-x-0.5 transition-transform" />
-              </button>
-              <button
-                onClick={nextSlide}
-                className="hidden lg:flex absolute -right-4 xl:-right-6 top-1/2 transform -translate-y-1/2 z-10 w-10 h-10 xl:w-12 xl:h-12 bg-gradient-to-r from-green-600 to-green-700 rounded-full shadow-xl items-center justify-center hover:from-green-700 hover:to-green-800 transition-all duration-300 hover:scale-110 group backdrop-blur-sm"
-              >
-                <ChevronRight className="w-5 h-5 xl:w-6 xl:h-6 text-white transform group-hover:translate-x-0.5 transition-transform" />
-              </button>
-
-              {/* Navigation améliorée */}
-              <div className="mt-4 sm:mt-6 flex justify-center items-center space-x-3 sm:space-x-4">
-                {/* Bouton Précédent mobile/tablette */}
+              
+              {/* Contrôles de navigation */}
+              <div className="flex justify-between items-center mt-6">
                 <button
                   onClick={prevSlide}
-                  className="lg:hidden p-2 sm:p-3 rounded-full bg-gradient-to-r from-blue-100 to-blue-200 hover:from-blue-200 hover:to-blue-300 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+                  className="w-12 h-12 rounded-full bg-white/80 backdrop-blur-lg border border-white/50 shadow-lg hover:shadow-xl flex items-center justify-center group transition-all duration-300 hover:scale-110"
                 >
-                  <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 text-blue-700" />
+                  <ChevronLeft className="w-5 h-5 text-slate-700 transform group-hover:-translate-x-0.5 transition-transform" />
                 </button>
-
-                {/* Indicateurs de pagination améliorés */}
-                <div className="flex items-center justify-center space-x-2 sm:space-x-3">
+                
+                {/* Indicateurs */}
+                <div className="flex gap-2">
                   {slides.map((_, index) => (
                     <button
                       key={index}
-                      onClick={() => goToSlide(index)}
-                      className={`relative transition-all duration-500 hover:scale-125 ${index === currentSlide ? 'w-6 sm:w-8 h-2 sm:h-3' : 'w-2 sm:w-3 h-2 sm:h-3'}`}
-                    >
-                      <div className={`w-full h-full rounded-full transition-all duration-500 ${index === currentSlide ? 'bg-gradient-to-r from-blue-600 to-green-600 shadow-lg' : 'bg-gray-300 hover:bg-gray-400'}`}></div>
-                      {index === currentSlide && (
-                        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400 to-green-400 animate-pulse opacity-50"></div>
-                      )}
-                    </button>
+                      onClick={() => setCurrentSlide(index)}
+                      className={`transition-all duration-300 rounded-full ${
+                        index === currentSlide 
+                          ? 'w-8 h-3 bg-gradient-to-r from-blue-500 to-emerald-500 shadow-lg' 
+                          : 'w-3 h-3 bg-slate-300 hover:bg-slate-400'
+                      }`}
+                    />
                   ))}
                 </div>
-
-                {/* Bouton Suivant mobile/tablette */}
+                
                 <button
                   onClick={nextSlide}
-                  className="lg:hidden p-2 sm:p-3 rounded-full bg-gradient-to-r from-green-100 to-green-200 hover:from-green-200 hover:to-green-300 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+                  className="w-12 h-12 rounded-full bg-white/80 backdrop-blur-lg border border-white/50 shadow-lg hover:shadow-xl flex items-center justify-center group transition-all duration-300 hover:scale-110"
                 >
-                  <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-green-700" />
+                  <ChevronRight className="w-5 h-5 text-slate-700 transform group-hover:translate-x-0.5 transition-transform" />
                 </button>
               </div>
             </div>
           </div>
 
-          {/* Vidéo - Responsive et améliorée */}
-          <div className={`w-full xl:w-3/5 xl:flex-shrink-0 transform transitio n-all duration-1000 delay-300 ${isVisible ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'}`}>
-            <div className="relative max-w-5xl mx-auto xl:mx-0 h-full">
-              <div className="relative w-full h-full">
-                <div className="aspect-video bg-gradient-to-br from-blue-100 via-indigo-50 to-green-100 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-500 border border-blue-200/30 group">
+          {/* Colonne droite - Vidéo et Objectifs */}
+          <div className={`space-y-8 transform transition-all duration-1000 delay-500 ${isVisible ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'}`}>
+            
+            {/* Vidéo */}
+            <div className="relative group">
+              <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-900 to-blue-900 shadow-2xl">
+                <div className="aspect-video relative">
                   <video
                     controls
-                    className="w-full h-full object-fill "
+                    className="w-full h-full object-cover"
                     preload="metadata"
-                    poster="/Rectangle 11.png"
+                    poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%231e293b'/%3E%3Cstop offset='100%25' stop-color='%231e40af'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='450' fill='url(%23grad)'/%3E%3C/svg%3E"
                   >
                     <source src="/WhatsApp Video 2025-07-18 at 16.36.02.mp4" type="video/mp4" />
-                    <source src="/WhatsApp Video 2025-07-18 at 16.36.02.mp4" type="video/webm" />
-                    <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-500 via-indigo-500 to-green-500 text-white p-4 sm:p-6">
+                    {/* Fallback élégant */}
+                    <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-slate-900 to-blue-900 text-white">
                       <div className="text-center">
-                        <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-28 lg:h-28 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 md:mb-6 backdrop-blur-sm shadow-xl animate-pulse">
-                          <svg className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-16 lg:h-16" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M8 5v14l11-7z" />
-                          </svg>
+                        <div className="w-20 h-20 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center mx-auto mb-4 animate-pulse">
+                          <Play className="w-8 h-8 ml-1" />
                         </div>
-                        <h4 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-2 md:mb-3">Vidéo de Présentation</h4>
-                        <p className="text-sm sm:text-base md:text-lg lg:text-xl text-blue-100">Votre navigateur ne supporte pas la vidéo.</p>
+                        <h4 className="text-2xl font-bold mb-2">Découvrez MIMAP</h4>
+                        <p className="text-blue-200">Présentation de notre équipe médicale</p>
                       </div>
                     </div>
                   </video>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none rounded-2xl sm:rounded-3xl"></div>
+                  
+                  {/* Overlay au hover */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-3xl"></div>
                 </div>
               </div>
+              
+              {/* Badge qualité */}
+              <div className="absolute top-4 left-4 px-3 py-1 bg-black/50 backdrop-blur-sm rounded-full text-white text-sm font-medium">
+                Vidéo de présentation
+              </div>
             </div>
-          </div>
-        </div>
 
-        {/* Section Objectif améliorée */}
-        <div className={`max-w-5xl mx-auto text-center px-4 sm:px-6 lg:px-8 mb-8 sm:mb-12 md:mb-16 lg:mb-20 transform transition-all duration-1000 delay-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-          <div className="bg-white/70 backdrop-blur-lg rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 lg:p-12 shadow-2xl border border-white/30 hover:shadow-3xl transition-all duration-500 group relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-white/30 to-green-50/50 rounded-2xl sm:rounded-3xl"></div>
-            <div className="relative z-10">
-              <div className="inline-flex items-center bg-gradient-to-r from-blue-100 to-green-100 px-4 sm:px-6 py-2 sm:py-3 rounded-full mb-4 sm:mb-6 shadow-lg">
-                <span className="text-xl sm:text-2xl mr-2 sm:mr-3">💡</span>
-                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold bg-gradient-to-r from-blue-800 to-green-700 bg-clip-text text-transparent">Notre Objectif</h3>
+            {/* Section Objectifs */}
+            {/*<div className="bg-black rounded-3xl p-8 shadow-lg border border-white/30  absolute">
+              <div className="text-center">
+                <div className="inline-flex items-center gap-2 bg-gradient-to-r from-emerald-100 to-blue-100 px-4 py-2 rounded-full mb-6">
+                  <Target className="w-5 h-5 text-emerald-600" />
+                  <span className="font-semibold text-emerald-700">Notre Objectif</span>
+                </div>
+                
+                <h3 className="text-2xl font-bold text-slate-800 mb-6">
+                  Votre bien-être, notre priorité
+                </h3>
+                
+                <div className="space-y-4 text-slate-600 leading-relaxed">
+                  <p>
+                    Accompagner chaque membre de votre famille et votre organisation à se sentir protégé, 
+                    épanoui et prêt à relever tous les défis. Ensemble, faisons de la santé et du bien-être 
+                    un mode de vie.
+                  </p>
+                  <p>
+                    Chez MIMAP, notre objectif est de fournir des soins de santé de qualité, accessibles à tous. 
+                    Nous nous engageons à améliorer le bien-être de nos patients grâce à une approche centrée 
+                    sur leurs besoins spécifiques.
+                  </p>
+                </div>
               </div>
-              <div className="space-y-4 sm:space-y-6">
-                <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-700 leading-relaxed max-w-4xl mx-auto">
-                  Accompagner chaque membre de votre famille et votre organisation à se sentir protégé, épanoui et prêt à relever tous les défis. Ensemble, faisons de la santé et du bien-être un mode de vie.
-                </p>
-                <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-700 leading-relaxed max-w-4xl mx-auto">
-                  Chez MIMAP, notre objectif est de fournir des soins de santé de qualité, accessibles à tous. Nous nous engageons à améliorer le bien-être de nos patients grâce à une approche centrée sur leurs besoins spécifiques.
-                </p>
-              </div>
-              <div className="w-20 sm:w-24 md:w-32 h-1 bg-gradient-to-r from-blue-600 to-green-600 mx-auto mt-6 sm:mt-8 rounded-full shadow-lg"></div>
-            </div>
+            </div>*/}
           </div>
         </div>
       </div>
