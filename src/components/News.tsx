@@ -14,7 +14,7 @@ const News = () => {
       gradient: "from-blue-500 to-blue-600"
     },
     {
-      title: "Formation BLS/CPR Certifiée",
+      title: "Formation BLS/CPR Certifiée pour le personnel de la banque mondiale",
       description: "Formation aux premiers secours certifiée par l'American Heart Association.",
       image: "/494916040_1211646377416138_87313405854168224_n.jpg",
       link: "https://www.facebook.com/photo.php?fbid=1211646367416139&set=pb.100057123622796.-2207520000&type=3",

@@ -9,9 +9,9 @@ const Team = () => {
 
   const doctors = [
     {
-      name: "Khadija Faye MBA,RRT",
+      name: "Khadija Faye, MBA, RRT",
       specialty: "Kinésithérapeute respiratoire",
-      diplôme: "spécialisé en kinésithérapie respiratoire, en pédiatrie et néonatalogie",
+      diplôme: "spécialisé en pédiatrie et néonatalogie",
       image: "/WhatsApp Image 2025-07-18 at 18.01.24.jpeg",
       specialtyColor: "from-cyan-500 to-cyan-600",
       icon: Users

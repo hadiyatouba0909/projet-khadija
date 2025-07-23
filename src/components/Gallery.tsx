@@ -46,7 +46,7 @@ const Gallery = () => {
     {
       type: 'image',
       src: "/WhatsApp Image 2025-07-21 at 12.10.56.jpeg",
-      alt: "MIMAP se déplace en entreprise pour réaliser des bilans de santé. Une façon simple et efficace de prendre soin de vos employés sur place.",
+      alt: "MIMAP se déplace dans vos locaux pour réaliser des bilans de santé. Une façon simple et efficace de prendre soin de vos employés sur place.",
       category: "Bilan MIMAP chez vous",
       gradient: "from-teal-500 to-teal-600"
     },

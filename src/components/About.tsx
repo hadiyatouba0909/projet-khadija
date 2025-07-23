@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Target, Users, Award, Heart, ChevronLeft, ChevronRight, Play } from 'lucide-react';
+import { Target, Users, Award, Heart, ChevronLeft, ChevronRight, Play, Lightbulb } from 'lucide-react';
 
 const About = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -166,6 +166,58 @@ const About = () => {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Section Notre Objectif */}
+        <div className="max-w-4xl mx-auto">
+          <div className="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-gray-100 relative overflow-hidden group hover:shadow-2xl transition-all duration-500">
+            {/* Gradient de fond animé */}
+            <div className="absolute inset-0 bg-gradient-to-br from-yellow-50 via-orange-50 to-red-50 opacity-50 group-hover:opacity-70 transition-opacity duration-500"></div>
+            
+            {/* Forme décorative */}
+            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-yellow-200 to-orange-200 rounded-full opacity-20 translate-x-16 -translate-y-16 group-hover:scale-125 transition-transform duration-700"></div>
+            
+            <div className="relative z-10">
+              {/* En-tête avec icône */}
+              <div className="flex items-center justify-center mb-8">
+                <div className="w-16 h-16 rounded-full bg-gradient-to-r from-yellow-500 to-orange-500 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-500">
+                  <Lightbulb className="w-8 h-8 text-white" />
+                </div>
+              </div>
+              
+              {/* Titre */}
+              <h3 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-8 group-hover:text-gray-900 transition-colors">
+                💡 Notre Objectif
+              </h3>
+              
+              {/* Ligne décorative */}
+              <div className="w-20 h-1 bg-gradient-to-r from-yellow-500 to-orange-500 mx-auto mb-8 group-hover:w-32 transition-all duration-500"></div>
+              
+              {/* Contenu principal */}
+              <div className="text-center">
+                <p className="text-xl md:text-2xl text-gray-700 leading-relaxed font-medium group-hover:text-gray-800 transition-colors">
+                  Accompagner chaque membre de votre famille et votre organisation à se sentir 
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-green-600 font-bold"> protégé</span>, 
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-purple-600 font-bold"> épanoui </span>
+                  et prêt à relever tous les défis.
+                </p>
+                
+                <div className="mt-8 p-6 bg-gradient-to-r from-blue-50 to-green-50 rounded-2xl border border-blue-100 group-hover:border-blue-200 transition-colors">
+                  <p className="text-lg text-gray-700 font-semibold">
+                    Ensemble, faisons de la santé et du bien-être un 
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-green-600"> mode de vie</span>.
+                  </p>
+                </div>
+              </div>
+              
+              {/* Points décoratifs */}
+              <div className="flex justify-center mt-8 space-x-2">
+                <div className="w-2 h-2 rounded-full bg-yellow-400 animate-pulse"></div>
+                <div className="w-2 h-2 rounded-full bg-orange-400 animate-pulse" style={{animationDelay: '0.2s'}}></div>
+                <div className="w-2 h-2 rounded-full bg-red-400 animate-pulse" style={{animationDelay: '0.4s'}}></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
