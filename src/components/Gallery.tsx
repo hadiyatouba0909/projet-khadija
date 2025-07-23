@@ -40,7 +40,7 @@ const Gallery = () => {
       type: 'image',
       src: "/equipe.jpg",
       alt: "Journée mondiale du diabète avec le ministère de la santé,FNUAP, SOS diabète Mauritanie",
-      category: "Journée mondiale du diabète",
+      category: "Journée mondiale",
       gradient: "from-purple-500 to-purple-600"
     },
     {
@@ -54,7 +54,7 @@ const Gallery = () => {
       type: 'image',
       src: "/WhatsApp Image 2025-07-18 at 18.48.48 (1).jpeg",
       alt: "Séance de kinésithérapie",
-      category: "Bilan MIMAP chez vous",
+      category: "Kinésithérapie respiratoire",
       gradient: "from-teal-500 to-teal-600"
     }
   ];

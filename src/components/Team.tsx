@@ -58,7 +58,7 @@ const Team = () => {
     },
     {
       name: "Dr. Cheikh Diouf",
-      specialty: "Généraliste, Médecine du sport et de la Drepanocytologue",
+      specialty: "Généraliste",
       diplôme: "Diplôme de spécialité en médecine du sport et drepanocytose",
       image: "/WhatsApp Image 2025-07-21 at 13.00.28.jpeg",
       specialtyColor: "from-orange-500 to-orange-600",
@@ -67,7 +67,7 @@ const Team = () => {
     {
       name: "Dr. Mohamed Yahya Bowba",
       specialty: "Généraliste",
-      diplôme: "Diplôme d'État de docteur en médecine générale",
+      diplôme: "Diplôme d’état en médecine générale",
       image: "/medecin-1024x576.jpg",
       specialtyColor: "from-teal-500 to-teal-600",
       icon: Stethoscope
