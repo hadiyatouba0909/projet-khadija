@@ -1,4 +1,4 @@
-import { ExternalLink, Facebook, Calendar, ArrowRight } from 'lucide-react';
+import { ExternalLink, Facebook, Calendar, ArrowRight, Instagram, Linkedin } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 const News = () => {
@@ -47,6 +47,30 @@ const News = () => {
       }
     };
   }, []);
+
+  const socialLinks = [
+    {
+      name: "Facebook",
+      url: "https://www.facebook.com/share/18pXwBKaiJ/?mibextid=wwXIfr",
+      icon: Facebook,
+      color: "from-blue-600 to-blue-700",
+      hoverColor: "hover:from-blue-700 hover:to-blue-800"
+    },
+    {
+      name: "Instagram",
+      url: "https://www.instagram.com/mimap_rim?igsh=MTd5OTNreDJkdW85Zg%3D%3D&utm_source=qr",
+      icon: Instagram,
+      color: "from-pink-500 to-purple-600",
+      hoverColor: "hover:from-pink-600 hover:to-purple-700"
+    },
+    {
+      name: "LinkedIn",
+      url: "https://www.linkedin.com/company/cabinet-mimap-mauritania-internal-medecine-and-pediatrics/?viewAsMember=true",
+      icon: Linkedin,
+      color: "from-blue-700 to-blue-800",
+      hoverColor: "hover:from-blue-800 hover:to-blue-900"
+    }
+  ];
 
   return (
     <section id="news" className="py-12 sm:py-16 md:py-20 lg:py-24 bg-gradient-to-br from-slate-50 via-green-50/30 to-blue-50/20 relative overflow-hidden">
@@ -145,26 +169,36 @@ const News = () => {
           ))}
         </div>
 
-        {/* Section call-to-action */}
+        {/* Section call-to-action avec réseaux sociaux */}
         {newsItems.length > 0 && (
           <div className={`text-center mt-12 sm:mt-16 md:mt-20 transform transition-all duration-1000 delay-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 shadow-xl border border-white/50 max-w-2xl mx-auto">
               <h3 className="text-xl sm:text-2xl md:text-3xl font-bold bg-gradient-to-r from-green-800 to-blue-700 bg-clip-text text-transparent mb-3 sm:mb-4">
                 Restez connectés !
               </h3>
-              <p className="text-sm sm:text-base md:text-lg text-gray-600 mb-4 sm:mb-6 leading-relaxed">
-                Suivez-nous sur Facebook pour ne manquer aucune de nos actualités et événements
+              <p className="text-sm sm:text-base md:text-lg text-gray-600 mb-6 sm:mb-8 leading-relaxed">
+                Suivez-nous sur nos réseaux sociaux pour ne manquer aucune de nos actualités et événements
               </p>
-              <a
-                href="https://www.facebook.com/profile.php?id=100057123622796"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center bg-gradient-to-r from-green-600 to-green-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-bold hover:from-green-700 hover:to-blue-800 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105 group text-sm sm:text-base"
-              >
-                <Facebook className="w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3 group-hover:animate-bounce" />
-                Suivre MIMAP
-                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-              </a>
+              
+              {/* Boutons de réseaux sociaux */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                {socialLinks.map((social, index) => {
+                  const IconComponent = social.icon;
+                  return (
+                    <a
+                      key={social.name}
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`inline-flex items-center justify-center w-full sm:w-auto bg-gradient-to-r ${social.color} ${social.hoverColor} text-white px-6 py-3 rounded-xl font-medium transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 group min-w-[140px]`}
+                      style={{ animationDelay: `${index * 100}ms` }}
+                    >
+                      <IconComponent className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform duration-300" />
+                      <span className="font-semibold">{social.name}</span>
+                    </a>
+                  );
+                })}
+              </div>
             </div>
           </div>
         )}
