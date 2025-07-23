@@ -11,8 +11,8 @@ const Gallery = () => {
     {
       type: 'image',
       src: "/Rectangle 11.png",
-      alt: "L'équipe de MIMAP",
-      category: "Équipe",
+      alt: "L’équipe de MIMAP avec sos diabète ",
+      category: "L'équipe de MIMAP",
       gradient: "from-blue-500 to-blue-600"
     },
      {
@@ -26,7 +26,7 @@ const Gallery = () => {
       type: 'image',
       src: "/491523089_1198885492025560_5931773069961017682_n.jpg",
       alt: "Nettoyage d'oreille professionnel avec irrigation.",
-      category: "Nettoyage d'oreille",
+      category: "Lavage auriculaire",
       gradient: "from-pink-500 to-pink-600"
     },
     {
@@ -39,15 +39,22 @@ const Gallery = () => {
     {
       type: 'image',
       src: "/equipe.jpg",
-      alt: "Journée mondiale du diabète",
-      category: "Journée mondiale",
+      alt: "Journée mondiale du diabète avec le ministère de la santé,FNUAP, SOS diabète Mauritanie",
+      category: "Journée mondiale du diabète",
       gradient: "from-purple-500 to-purple-600"
     },
     {
       type: 'image',
+      src: "/WhatsApp Image 2025-07-21 at 12.10.56.jpeg",
+      alt: "MIMAP se déplace en entreprise pour réaliser des bilans de santé. Une façon simple et efficace de prendre soin de vos employés sur place.",
+      category: "Bilan MIMAP chez vous",
+      gradient: "from-teal-500 to-teal-600"
+    },
+    {
+      type: 'image',
       src: "/WhatsApp Image 2025-07-18 at 18.48.48 (1).jpeg",
-      alt: "Consultation en kinésithérapie respiratoire",
-      category: "Kinésithérapie respiratoire",
+      alt: "Séance de kinésithérapie",
+      category: "Bilan MIMAP chez vous",
       gradient: "from-teal-500 to-teal-600"
     }
   ];

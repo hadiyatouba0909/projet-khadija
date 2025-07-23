@@ -27,8 +27,8 @@ const Testimonials = () => {
     },
     {
       name: "Banque Mondiale",
-      role: "Partenaire institutionnel",
-      content: "Merci à Mauritania Internal Medicine and Pediatrics (MIMAP) pour deux excellentes sessions de formation en Réanimation Cardio-pulmonaire (RCR) et Basic Life Support (BLS) pour le personnel du bureau de la Banque mondiale en Mauritanie.Des formateurs expérimentés, des contenus adaptés, des exercices pratiques pertinents — une expérience professionnelle et enrichissante, saluée par tous les participants.Je recommande vivement cette équipe pour toute formation BLS et RCR.",
+      role: "Thierno Ba Spécialiste Santé – Banque mondiale, Mauritanie",
+      content: "Merci MIMAP pour deux excellentes sessions de formation  RCR et BLS pour le personnel du bureau de la Banque mondiale en Mauritanie.Des formateurs expérimentés, des contenus adaptés, des exercices pratiques pertinents — une expérience professionnelle et enrichissante, saluée par tous les participants.Je recommande vivement cette équipe pour toute formation BLS et RCR.",
       rating: 5,
       image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuTRpMVHHf9-NPAXTStkujbW38fSD4HeNBZQ&s",
       type: "institutional",

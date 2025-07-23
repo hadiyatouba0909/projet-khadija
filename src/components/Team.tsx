@@ -59,7 +59,7 @@ const Team = () => {
     {
       name: "Dr. Cheikh Diouf",
       specialty: "Généraliste, Médecine du sport et de la Drepanocytologue",
-      diplôme: "Diplôme d'état de médecine générale, Spécialisation en médecine du sport",
+      diplôme: "Diplôme de spécialité en médecine du sport et drepanocytose",
       image: "/WhatsApp Image 2025-07-21 at 13.00.28.jpeg",
       specialtyColor: "from-orange-500 to-orange-600",
       icon: Award
