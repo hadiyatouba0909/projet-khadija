@@ -47,6 +47,7 @@ const Footer = () => {
   const quickLinks = [
     { name: "Accueil", href: "#home" },
     { name: "À propos", href: "#about" },
+    { name: "Présentation", href: "#presentation" },
     { name: "Services", href: "#medical-services" },
     { name: "Équipe", href: "#team" },
     { name: "Galerie", href: "#gallery" },

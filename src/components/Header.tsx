@@ -1,20 +1,29 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Phone, Mail, MapPin} from 'lucide-react';
+import { Menu, X, Phone, Mail, MapPin, Globe, ChevronDown } from 'lucide-react';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
+  const [currentLanguage, setCurrentLanguage] = useState('fr');
 
   const navItems = [
     { name: 'Accueil', href: '#home', id: 'home' },
     { name: 'À propos', href: '#about', id: 'about' },
+    { name: 'Présentation', href: '#presentation', id: 'presentation' },
     { name: 'Services', href: '#medical-services', id: 'medical-services' },
     { name: 'Équipe', href: '#team', id: 'team' },
     { name: 'Galerie', href: '#gallery', id: 'gallery' },
     { name: 'Actualités', href: '#news', id: 'news' },
     { name: 'Témoignages', href: '#testimonials', id: 'testimonials' },
     { name: 'Contact', href: '#contact', id: 'contact' },
+  ];
+
+  const languages = [
+    { code: 'fr', name: 'Français', flag: '🇫🇷' },
+    { code: 'en', name: 'English', flag: '🇺🇸' },
+    { code: 'ar', name: 'العربية', flag: '🇲🇷' }
   ];
 
   // Détecter le scroll et la section active
@@ -38,7 +47,19 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavClick = (item: { name?: string; href?: string; id: any; }) => {
+  // Fermer le menu langue quand on clique ailleurs
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (isLanguageMenuOpen && !event.target.closest('.language-menu')) {
+        setIsLanguageMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [isLanguageMenuOpen]);
+
+  const handleNavClick = (item) => {
     setActiveSection(item.id);
     setIsMenuOpen(false);
     
@@ -46,6 +67,17 @@ const Header = () => {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  const handleLanguageChange = (langCode) => {
+    setCurrentLanguage(langCode);
+    setIsLanguageMenuOpen(false);
+    // Ici vous pouvez ajouter la logique de changement de langue
+    console.log('Langue changée vers:', langCode);
+  };
+
+  const getCurrentLanguage = () => {
+    return languages.find(lang => lang.code === currentLanguage);
   };
 
   return (
@@ -95,10 +127,10 @@ const Header = () => {
                 alt="MIMAP Logo" 
                 className={`h-10 w-64 object-cover transition-all duration-500 ${isScrolled ? 'h-12 sm:h-12' : 'h-12 sm:h-16'}`}
                 onError={(e) => {
-                  const img = e.target as HTMLImageElement;
+                  const img = e.target;
                   img.style.display = 'none';
                   if (img.nextElementSibling) {
-                    (img.nextElementSibling as HTMLElement).style.display = 'flex';
+                    img.nextElementSibling.style.display = 'flex';
                   }
                 }}
               />
@@ -106,7 +138,7 @@ const Header = () => {
           </div>
 
           {/* Navigation Desktop */}
-          <div className="hidden lg:flex space-x-2">
+          <div className="hidden lg:flex items-center space-x-2">
             {navItems.map((item) => (
               <a
                 key={item.name}
@@ -127,6 +159,38 @@ const Header = () => {
                 )}
               </a>
             ))}
+            
+            {/* Menu de traduction */}
+            <div className="relative language-menu ml-4">
+              <button
+                onClick={() => setIsLanguageMenuOpen(!isLanguageMenuOpen)}
+                className="flex items-center space-x-2 px-3 py-2 rounded-lg border border-gray-200 hover:border-blue-300 hover:bg-blue-50 transition-all duration-300 bg-white shadow-sm"
+              >
+                <Globe className="w-4 h-4 text-blue-600" />
+                <span className="text-sm font-medium text-gray-700">
+                  {getCurrentLanguage()?.flag} {getCurrentLanguage()?.code.toUpperCase()}
+                </span>
+                <ChevronDown className={`w-4 h-4 text-gray-500 transition-transform duration-200 ${isLanguageMenuOpen ? 'rotate-180' : ''}`} />
+              </button>
+
+              {/* Menu déroulant des langues */}
+              {isLanguageMenuOpen && (
+                <div className="absolute right-0 top-full mt-2 bg-white rounded-lg shadow-xl border border-gray-200 py-2 min-w-[140px] z-50">
+                  {languages.map((language) => (
+                    <button
+                      key={language.code}
+                      onClick={() => handleLanguageChange(language.code)}
+                      className={`w-full text-left px-4 py-2 hover:bg-blue-50 transition-colors duration-200 flex items-center space-x-3 ${
+                        currentLanguage === language.code ? 'bg-blue-50 text-blue-600' : 'text-gray-700'
+                      }`}
+                    >
+                      <span className="text-lg">{language.flag}</span>
+                      <span className="text-sm font-medium">{language.name}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
 
           {/* Bouton menu mobile */}
@@ -167,6 +231,30 @@ const Header = () => {
                   </div>
                 </a>
               ))}
+              
+              {/* Menu langue mobile */}
+              <div className="border-t border-gray-200 pt-4 mt-4">
+                <div className="px-4 py-2 text-sm font-medium text-gray-500 uppercase tracking-wide">
+                  Langue
+                </div>
+                {languages.map((language) => (
+                  <button
+                    key={language.code}
+                    onClick={() => handleLanguageChange(language.code)}
+                    className={`w-full text-left py-3 px-4 rounded-lg transition-all duration-300 flex items-center space-x-3 ${
+                      currentLanguage === language.code
+                        ? 'text-blue-600 bg-gradient-to-r from-blue-50 to-indigo-50 font-semibold border-l-4 border-blue-600'
+                        : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50 hover:pl-6'
+                    }`}
+                  >
+                    <span className="text-lg">{language.flag}</span>
+                    <span>{language.name}</span>
+                    {currentLanguage === language.code && (
+                      <div className="w-2 h-2 bg-blue-600 rounded-full animate-pulse ml-auto"></div>
+                    )}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
         )}
