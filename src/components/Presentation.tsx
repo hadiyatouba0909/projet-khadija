@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Heart, Play } from 'lucide-react';
+import { Heart } from 'lucide-react';
 
 const Presentation = () => {
   const [isVisible, setIsVisible] = useState(false);

@@ -2,8 +2,6 @@ import { useState, useEffect } from 'react';
 import { Target, Users, Award, Heart, Lightbulb } from 'lucide-react';
 
 const About = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [currentSlide, setCurrentSlide] = useState(0);
   const [visibleItems, setVisibleItems] = useState<number[]>([]);
 
   const slides = [
@@ -74,27 +72,13 @@ const About = () => {
     elements.forEach(el => observer.observe(el));
 
     // Auto-slide
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 5000);
-
     return () => {
-      clearInterval(interval);
       if (section) {
         observer.unobserve(section);
       }
       observer.disconnect();
     };
   }, []);
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-  };
-
   return (
     <section id="about" className="py-20 bg-gradient-to-br from-gray-50 to-blue-50 relative overflow-hidden">
       {/* Formes décoratives animées */}
@@ -280,3 +264,10 @@ const About = () => {
 };
 
 export default About;
+
+function setIsVisible(_arg0: boolean) {
+  throw new Error('Function not implemented.');
+}
+// Remove this function entirely, as setIsVisible is not needed.
+// The visibility logic is handled by setVisibleItems and visibleItems state.
+// You can safely delete this function and its call in the useEffect.
