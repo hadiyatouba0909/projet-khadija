@@ -52,7 +52,6 @@ const About = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setIsVisible(true);
             const index = parseInt((entry.target as HTMLElement).dataset.index || '0');
             if (!isNaN(index)) {
               setVisibleItems(prev => [...new Set([...prev, index])]);
@@ -71,7 +70,6 @@ const About = () => {
     const elements = document.querySelectorAll('.about-card');
     elements.forEach(el => observer.observe(el));
 
-    // Auto-slide
     return () => {
       if (section) {
         observer.unobserve(section);
@@ -79,6 +77,7 @@ const About = () => {
       observer.disconnect();
     };
   }, []);
+
   return (
     <section id="about" className="py-20 bg-gradient-to-br from-gray-50 to-blue-50 relative overflow-hidden">
       {/* Formes décoratives animées */}
@@ -264,10 +263,3 @@ const About = () => {
 };
 
 export default About;
-
-function setIsVisible(_arg0: boolean) {
-  throw new Error('Function not implemented.');
-}
-// Remove this function entirely, as setIsVisible is not needed.
-// The visibility logic is handled by setVisibleItems and visibleItems state.
-// You can safely delete this function and its call in the useEffect.
