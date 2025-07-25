@@ -22,15 +22,15 @@ const Header = () => {
 
   const languages = [
     { code: 'fr', name: 'Français', flag: '🇫🇷' },
+    { code: 'ar', name: 'العربية', flag: '🇲🇷' },
     { code: 'en', name: 'English', flag: '🇺🇸' },
-    { code: 'ar', name: 'العربية', flag: '🇲🇷' }
   ];
 
   // Détecter le scroll et la section active
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
-      
+
       const sections = navItems.map(item => document.getElementById(item.id));
       const scrollPosition = window.scrollY + 100;
 
@@ -68,7 +68,7 @@ const Header = () => {
   const handleNavClick = (item: { name?: string; href?: string; id: any; }) => {
     setActiveSection(item.id);
     setIsMenuOpen(false);
-    
+
     const element = document.getElementById(item.id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -91,7 +91,7 @@ const Header = () => {
       {/* Top bar amélioré */}
       <div className={`hidden md:block bg-gradient-to-r from-blue-900 to-indigo-900 text-white text-sm transition-all duration-500 ${isScrolled ? 'py-1' : 'py-2'}`}>
         <div className="container mx-auto px-4 flex justify-between items-center">
-          
+
           {/* Section gauche - Contact */}
           <div className="flex items-center space-x-6">
             <div className="flex items-center hover:text-blue-200 transition-colors cursor-pointer group">
@@ -112,7 +112,7 @@ const Header = () => {
                 <span className="font-medium">NOUAKCHOTT</span> - <span>Ilot K EXT 929</span>
               </div>
             </div>
-            
+
             <div className="flex items-center space-x-2">
               <span>🕐</span>
               <div className="text-xs">
@@ -128,9 +128,9 @@ const Header = () => {
         <div className="flex justify-between items-center">
           <div className="flex items-center">
             <div className="flex items-center">
-              <img 
-                src="/ogoMIMAP by Toutou [Récupéré]_Plan de travail 1.png" 
-                alt="MIMAP Logo" 
+              <img
+                src="/ogoMIMAP by Toutou [Récupéré]_Plan de travail 1.png"
+                alt="MIMAP Logo"
                 className={`h-10 w-64 object-cover transition-all duration-500 ${isScrolled ? 'h-12 sm:h-12' : 'h-12 sm:h-16'}`}
                 onError={(e) => {
                   const img = e.target as HTMLImageElement;
@@ -153,11 +153,10 @@ const Header = () => {
                   e.preventDefault();
                   handleNavClick(item);
                 }}
-                className={`relative font-medium transition-all duration-300 py-2 px-4 rounded-lg ${
-                  activeSection === item.id
+                className={`relative font-medium transition-all duration-300 py-2 px-4 rounded-lg ${activeSection === item.id
                     ? 'text-blue-600 bg-gradient-to-r from-blue-50 to-indigo-50 shadow-md'
                     : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50'
-                }`}
+                  }`}
               >
                 {item.name}
                 {activeSection === item.id && (
@@ -165,7 +164,7 @@ const Header = () => {
                 )}
               </a>
             ))}
-            
+
             {/* Menu de traduction */}
             <div className="relative language-menu ml-4">
               <button
@@ -186,9 +185,8 @@ const Header = () => {
                     <button
                       key={language.code}
                       onClick={() => handleLanguageChange(language.code)}
-                      className={`w-full text-left px-4 py-2 hover:bg-blue-50 transition-colors duration-200 flex items-center space-x-3 ${
-                        currentLanguage === language.code ? 'bg-blue-50 text-blue-600' : 'text-gray-700'
-                      }`}
+                      className={`w-full text-left px-4 py-2 hover:bg-blue-50 transition-colors duration-200 flex items-center space-x-3 ${currentLanguage === language.code ? 'bg-blue-50 text-blue-600' : 'text-gray-700'
+                        }`}
                     >
                       <span className="text-lg">{language.flag}</span>
                       <span className="text-sm font-medium">{language.name}</span>
@@ -204,8 +202,8 @@ const Header = () => {
             className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
-            {isMenuOpen ? 
-              <X className="w-6 h-6 text-gray-700" /> : 
+            {isMenuOpen ?
+              <X className="w-6 h-6 text-gray-700" /> :
               <Menu className="w-6 h-6 text-gray-700" />
             }
           </button>
@@ -223,11 +221,10 @@ const Header = () => {
                     e.preventDefault();
                     handleNavClick(item);
                   }}
-                  className={`block py-3 px-4 rounded-lg transition-all duration-300 ${
-                    activeSection === item.id
+                  className={`block py-3 px-4 rounded-lg transition-all duration-300 ${activeSection === item.id
                       ? 'text-blue-600 bg-gradient-to-r from-blue-50 to-indigo-50 font-semibold border-l-4 border-blue-600'
                       : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50 hover:pl-6'
-                  }`}
+                    }`}
                 >
                   <div className="flex items-center justify-between">
                     <span>{item.name}</span>
@@ -237,7 +234,7 @@ const Header = () => {
                   </div>
                 </a>
               ))}
-              
+
               {/* Menu langue mobile */}
               <div className="border-t border-gray-200 pt-4 mt-4">
                 <div className="px-4 py-2 text-sm font-medium text-gray-500 uppercase tracking-wide">
@@ -247,11 +244,10 @@ const Header = () => {
                   <button
                     key={language.code}
                     onClick={() => handleLanguageChange(language.code)}
-                    className={`w-full text-left py-3 px-4 rounded-lg transition-all duration-300 flex items-center space-x-3 ${
-                      currentLanguage === language.code
+                    className={`w-full text-left py-3 px-4 rounded-lg transition-all duration-300 flex items-center space-x-3 ${currentLanguage === language.code
                         ? 'text-blue-600 bg-gradient-to-r from-blue-50 to-indigo-50 font-semibold border-l-4 border-blue-600'
                         : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50 hover:pl-6'
-                    }`}
+                      }`}
                   >
                     <span className="text-lg">{language.flag}</span>
                     <span>{language.name}</span>
