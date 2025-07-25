@@ -51,8 +51,8 @@ const Footer = () => {
     { name: "Services", href: "#medical-services" },
     { name: "Équipe", href: "#team" },
     { name: "Actualités", href: "#news" },
-    { name: "Galerie", href: "#gallery" },
     { name: "Témoignages", href: "#testimonials" },
+    { name: "Galerie", href: "#gallery" },
     { name: "Contact", href: "#contact" }
   ];
 
