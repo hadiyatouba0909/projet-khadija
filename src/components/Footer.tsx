@@ -50,8 +50,8 @@ const Footer = () => {
     { name: "Présentation", href: "#presentation" },
     { name: "Services", href: "#medical-services" },
     { name: "Équipe", href: "#team" },
-    { name: "Galerie", href: "#gallery" },
     { name: "Actualités", href: "#news" },
+    { name: "Galerie", href: "#gallery" },
     { name: "Témoignages", href: "#testimonials" },
     { name: "Contact", href: "#contact" }
   ];
