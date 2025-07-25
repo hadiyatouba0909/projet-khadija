@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, SetStateAction } from 'react';
 import { Menu, X, Phone, Mail, MapPin, Globe, ChevronDown } from 'lucide-react';
 
 const Header = () => {
@@ -49,8 +49,14 @@ const Header = () => {
 
   // Fermer le menu langue quand on clique ailleurs
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (isLanguageMenuOpen && !event.target.closest('.language-menu')) {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as HTMLElement | null;
+      if (
+        isLanguageMenuOpen &&
+        target &&
+        typeof target.closest === 'function' &&
+        !target.closest('.language-menu')
+      ) {
         setIsLanguageMenuOpen(false);
       }
     };
@@ -59,7 +65,7 @@ const Header = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [isLanguageMenuOpen]);
 
-  const handleNavClick = (item) => {
+  const handleNavClick = (item: { name?: string; href?: string; id: any; }) => {
     setActiveSection(item.id);
     setIsMenuOpen(false);
     
@@ -69,7 +75,7 @@ const Header = () => {
     }
   };
 
-  const handleLanguageChange = (langCode) => {
+  const handleLanguageChange = (langCode: SetStateAction<string>) => {
     setCurrentLanguage(langCode);
     setIsLanguageMenuOpen(false);
     // Ici vous pouvez ajouter la logique de changement de langue
@@ -127,10 +133,10 @@ const Header = () => {
                 alt="MIMAP Logo" 
                 className={`h-10 w-64 object-cover transition-all duration-500 ${isScrolled ? 'h-12 sm:h-12' : 'h-12 sm:h-16'}`}
                 onError={(e) => {
-                  const img = e.target;
+                  const img = e.target as HTMLImageElement;
                   img.style.display = 'none';
                   if (img.nextElementSibling) {
-                    img.nextElementSibling.style.display = 'flex';
+                    (img.nextElementSibling as HTMLElement).style.display = 'flex';
                   }
                 }}
               />
