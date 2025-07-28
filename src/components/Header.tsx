@@ -150,7 +150,7 @@ const Header = () => {
               <img
                 src="/logo.png"
                 alt="MIMAP Logo"
-                className={`h-20 w-94 object-cover transition-all duration-500 ${isScrolled ? 'h-12 sm:h-12' : 'h-12 sm:h-16'}`}
+                className={`h-20 w-[37vh] object-cover transition-all duration-500 ${isScrolled ? 'h-12 sm:h-12' : 'h-12 sm:h-16'}`}
                 onError={(e) => {
                   const img = e.target as HTMLImageElement;
                   img.style.display = 'none';

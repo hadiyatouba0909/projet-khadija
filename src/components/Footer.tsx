@@ -118,7 +118,7 @@ const Footer = () => {
                     <img 
                       src="/Logo MIMAP Horizontal second-04.png" 
                       alt="MIMAP Logo" 
-                      className="h-14 w-64 rounded-full sm:h-16 w-auto object-contain "
+                      className="h-14 w-[35vh] rounded-full sm:h-16 w-auto bg-black/20 object-contain transition-all duration-500 transform hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer "
                       onError={(e) => {
                         const img = e.target as HTMLImageElement;
                         img.style.display = 'none';

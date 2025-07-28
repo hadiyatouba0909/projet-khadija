@@ -41,15 +41,11 @@ const resources = {
         },
         our_team: {
           title: "Notre Équipe",
-          content: "Une équipe de professionnels de santé expérimentés, unis par la passion de soigner et de prévenir. Nous combinons expertise médicale et approche humaine pour vous offrir les meilleurs soins."
+          content: "Notre équipe d'experts, certifiée par des organismes internationaux tels que l'American Heart Association, s'engage à offrir des services de qualité supérieure."
         },
-        our_values: {
-          title: "Nos Valeurs",
-          content: "Excellence, bienveillance, innovation et proximité guident notre pratique quotidienne. Nous croyons en une médecine accessible, préventive et centrée sur le patient."
-        },
-        our_vision: {
-          title: "Notre Vision",
-          content: "Être le partenaire de confiance de votre santé, en proposant des solutions médicales innovantes et personnalisées pour améliorer votre qualité de vie."
+        our_partners: {
+          title: "Nos Partenaires",
+          content: "Nous avons eu le privilège de collaborer avec des institutions prestigieuses comme la Banque mondiale et des compagnies majeures telles que Tasiast."
         },
         section_badge: "À propos de MIMAP",
         page_title: "Qui sommes nous ?",
@@ -405,23 +401,19 @@ const resources = {
       about: {
         who_we_are: {
           title: "Who are we?",
-          content: "MIMAP is a group of general practitioners and specialists dedicated to preventive medicine, occupational health and certified training in first aid and CPR (cardiopulmonary resuscitation)."
+          content: "MIMAP is a group of general practitioners and specialists dedicated to preventive medicine, occupational health and certified first aid and CPR training (cardiopulmonary resuscitation)."
         },
         our_mission: {
           title: "Our Mission",
-          content: "Our mission is to place individual well-being at the heart of all our actions. Specialists devoted to the health and serenity of the whole family, regardless of age."
+          content: "Our mission is to place the well-being of individuals at the heart of all our actions. Specialists dedicated to the health and serenity of the whole family, whatever their age."
         },
         our_team: {
           title: "Our Team",
           content: "A team of experienced healthcare professionals, united by the passion to heal and prevent. We combine medical expertise and human approach to offer you the best care."
         },
-        our_values: {
-          title: "Our Values",
-          content: "Excellence, benevolence, innovation and proximity guide our daily practice. We believe in accessible, preventive and patient-centered medicine."
-        },
-        our_vision: {
-          title: "Our Vision",
-          content: "To be your trusted health partner, offering innovative and personalized medical solutions to improve your quality of life."
+        our_partners: { // Changé de 'our_partners' à 'our_values'
+          title: "Our Partners", // ou "Our Values"
+          content: "We have had the privilege of collaborating with prestigious institutions such as the World Bank and major companies like Tasiast."
         },
         section_badge: "About MIMAP",
         page_title: "Who are we?",
@@ -787,13 +779,9 @@ const resources = {
           title: "فريقنا",
           content: "فريق من المهنيين الصحيين ذوي الخبرة، متحدون بشغف العلاج والوقاية. نجمع بين الخبرة الطبية والنهج الإنساني لنقدم لكم أفضل رعاية."
         },
-        our_values: {
-          title: "قيمنا",
-          content: "التميز واللطف والابتكار والقرب توجه ممارستنا اليومية. نؤمن بطب متاح ووقائي ومتمحور حول المريض."
-        },
-        our_vision: {
-          title: "رؤيتنا",
-          content: "أن نكون شريككم الموثوق في الصحة، من خلال تقديم حلول طبية مبتكرة ومخصصة لتحسين جودة حياتكم."
+        our_partners: { // Changé de 'our_partners' à 'our_values'
+          title: "شركاؤنا", // ou "قيمنا" selon ce que vous voulez
+          content: "لقد حظينا بشرف التعاون مع مؤسسات مرموقة مثل البنك الدولي وشركات كبرى مثل تاسياست."
         },
         section_badge: "من نحن؟",
         page_title: "من نحن؟",
