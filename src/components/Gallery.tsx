@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { X, ChevronLeft, ChevronRight, Play, Camera, Facebook, FileImage } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const Gallery = () => {
+  const { t } = useTranslation();
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [itemsPerSlide, setItemsPerSlide] = useState(4);
@@ -11,50 +13,50 @@ const Gallery = () => {
     {
       type: 'image',
       src: "/Rectangle 11.png",
-      alt: "L’équipe de MIMAP avec sos diabète ",
-      category: "L'équipe de MIMAP",
+      alt: t('gallery.gallery_items.team_sos_diabetes.alt'),
+      category: t('gallery.gallery_items.team_sos_diabetes.category'),
       gradient: "from-blue-500 to-blue-600"
     },
      {
       type: 'image',
       src: "/khadija_faye_WA0005.jpg",
-      alt: "Directrice MIMAP",
-      category: "Interview Kassataya",
+      alt: t('gallery.gallery_items.director_interview.alt'),
+      category: t('gallery.gallery_items.director_interview.category'),
       gradient: "from-orange-500 to-orange-600"
     },
     {
       type: 'image',
       src: "/491523089_1198885492025560_5931773069961017682_n.jpg",
-      alt: "Nettoyage d'oreille professionnel avec irrigation.",
-      category: "Lavage auriculaire",
+      alt: t('gallery.gallery_items.ear_cleaning.alt'),
+      category: t('gallery.gallery_items.ear_cleaning.category'),
       gradient: "from-pink-500 to-pink-600"
     },
     {
       type: 'image',
       src: "/formation.jpg",
-      alt: "Formation BLS/CPR",
-      category: "Formation",
+      alt: t('gallery.gallery_items.bls_training.alt'),
+      category: t('gallery.gallery_items.bls_training.category'),
       gradient: "from-green-500 to-green-600"
     },
     {
       type: 'image',
       src: "/equipe.jpg",
-      alt: "Journée mondiale du diabète avec le ministère de la santé,FNUAP, SOS diabète Mauritanie",
-      category: "Journée mondiale",
+      alt: t('gallery.gallery_items.world_diabetes_day.alt'),
+      category: t('gallery.gallery_items.world_diabetes_day.category'),
       gradient: "from-purple-500 to-purple-600"
     },
     {
       type: 'image',
       src: "/WhatsApp Image 2025-07-21 at 12.10.56.jpeg",
-      alt: "MIMAP se déplace dans vos locaux pour réaliser des bilans de santé. Une façon simple et efficace de prendre soin de vos employés sur place.",
-      category: "Bilan MIMAP chez vous",
+      alt: t('gallery.gallery_items.mobile_checkup.alt'),
+      category: t('gallery.gallery_items.mobile_checkup.category'),
       gradient: "from-teal-500 to-teal-600"
     },
     {
       type: 'image',
       src: "/WhatsApp Image 2025-07-18 at 18.48.48 (1).jpeg",
-      alt: "Séance de kinésithérapie",
-      category: "Kinésithérapie respiratoire",
+      alt: t('gallery.gallery_items.physiotherapy.alt'),
+      category: t('gallery.gallery_items.physiotherapy.category'),
       gradient: "from-teal-500 to-teal-600"
     }
   ];
@@ -166,17 +168,17 @@ const Gallery = () => {
         <div className="text-center mb-12 sm:mb-16 md:mb-20">
           <div className={`inline-flex items-center bg-gradient-to-r from-purple-100 to-blue-100 border border-purple-200/50 px-4 py-2 sm:px-6 sm:py-3 rounded-full mb-4 sm:mb-6 shadow-lg backdrop-blur-sm transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-10 opacity-0 scale-95'}`}>
             <Camera className="w-4 h-4 sm:w-5 sm:h-5 text-purple-600 mr-2 animate-pulse" />
-            <span className="text-sm sm:text-base text-transparent bg-gradient-to-r from-purple-700 to-blue-600 bg-clip-text font-bold">Notre Galerie</span>
+            <span className="text-sm sm:text-base text-transparent bg-gradient-to-r from-purple-700 to-blue-600 bg-clip-text font-bold">{t('gallery.badge')}</span>
           </div>
           
           <h2 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-purple-900 via-blue-800 to-pink-700 bg-clip-text text-transparent mb-3 sm:mb-4 md:mb-6 leading-tight transform transition-all duration-1000 delay-200 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            Galerie
+            {t('gallery.title')}
           </h2>
           
           <div className={`w-16 sm:w-20 md:w-24 lg:w-32 h-1 bg-gradient-to-r from-purple-600 via-blue-500 to-pink-500 mx-auto mb-4 sm:mb-6 rounded-full shadow-lg transform transition-all duration-1000 delay-400 ${isVisible ? 'scale-x-100 opacity-100' : 'scale-x-0 opacity-0'}`}></div>
           
           <p className={`text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed px-4 transform transition-all duration-1000 delay-600 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            Découvrez nos infrastructures, notre équipe et nos événements à travers notre galerie
+            {t('gallery.subtitle')}
           </p>
         </div>
 
@@ -307,10 +309,10 @@ const Gallery = () => {
           {/* Statistiques */}
           <div className="flex justify-center items-center mt-4 sm:mt-6 space-x-4 text-xs sm:text-sm text-gray-500">
             <span className="bg-white/80 backdrop-blur-sm px-2 sm:px-3 py-1 rounded-full shadow-lg">
-              {currentSlide + 1} / {totalSlides}
+              {currentSlide + 1} {t('gallery.slide_counter')} {totalSlides}
             </span>
             <span className="bg-gradient-to-r from-purple-100 to-blue-100 px-2 sm:px-3 py-1 rounded-full shadow-lg border border-purple-200/50">
-              {galleryItems.length} Photos
+              {galleryItems.length} {t('gallery.photos_count')}
             </span>
           </div>
         </div>
@@ -360,7 +362,7 @@ const Gallery = () => {
                     {galleryItems[selectedImage].alt}
                   </p>
                   <p className="text-gray-300 text-xs sm:text-sm mt-1">
-                    {selectedImage + 1} / {galleryItems.length}
+                    {selectedImage + 1} {t('gallery.slide_counter')} {galleryItems.length}
                   </p>
                 </div>
               </div>
@@ -377,7 +379,7 @@ const Gallery = () => {
             className="inline-flex items-center bg-gradient-to-r from-green-600 to-green-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold hover:from-green-700 hover:to-blue-800 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105 group"
           >
             <Facebook className="w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3 group-hover:animate-bounce" />
-            <span>Voir plus sur Facebook</span>
+            <span>{t('gallery.see_more_facebook')}</span>
           </a>
         </div>
       </div>

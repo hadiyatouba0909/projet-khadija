@@ -1,41 +1,43 @@
 import { useState, useEffect } from 'react';
 import { Heart, Briefcase, GraduationCap, AlertTriangle } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const Services = () => {
+  const { t } = useTranslation();
   const [visibleItems, setVisibleItems] = useState<number[]>([]);
 
   const services = [
     {
       icon: Heart,
-      title: "Santé de la famille",
-      description: "Des programmes adaptés à toutes les étapes de la vie, de la petite enfance aux aînés.",
+      title: t('main_services.services_list.family_health.title'),
+      description: t('main_services.services_list.family_health.description'),
       color: "bg-red-100 text-red-600",
       gradient: "from-red-500 to-pink-500",
-      features: ["Pédiatrie", "Médecine familiale", "Suivi personnalisé"]
+      features: t('main_services.services_list.family_health.features', { returnObjects: true }) as string[]
     },
     {
       icon: Briefcase,
-      title: "Santé au travail",
-      description: "Une expertise éprouvée dans la médecine préventive, les bilans de pré-embauche la sécurité en entreprise et la gestion des urgences. ",
+      title: t('main_services.services_list.occupational_health.title'),
+      description: t('main_services.services_list.occupational_health.description'),
       color: "bg-blue-100 text-blue-600",
       gradient: "from-blue-500 to-cyan-500",
-      features: ["Médecine préventive", "Sécurité entreprise", "Gestion urgences"]
+      features: t('main_services.services_list.occupational_health.features', { returnObjects: true }) as string[]
     },
     {
       icon: GraduationCap,
-      title: "Formations certifiées",
-      description: "Des formations pratiques telles que BLS/CPR pour répondre efficacement aux situations d'urgence.",
+      title: t('main_services.services_list.certified_training.title'),
+      description: t('main_services.services_list.certified_training.description'),
       color: "bg-green-100 text-green-600",
       gradient: "from-green-500 to-emerald-500",
-      features: ["BLS/CPR", "Premiers secours", "Certification AHA"]
+      features: t('main_services.services_list.certified_training.features', { returnObjects: true }) as string[]
     },
     {
       icon: AlertTriangle,
-      title: "Sensibilisation",
-      description: "Des campagnes innovantes pour prévenir les arrêts cardiaques et promouvoir une santé globale.",
+      title: t('main_services.services_list.awareness.title'),
+      description: t('main_services.services_list.awareness.description'),
       color: "bg-orange-100 text-orange-600",
       gradient: "from-orange-500 to-red-500",
-      features: ["Prévention", "Campagnes santé", "Sensibilisation publique"]
+      features: t('main_services.services_list.awareness.features', { returnObjects: true }) as string[]
     }
   ];
 
@@ -69,17 +71,17 @@ const Services = () => {
         <div className="text-center mb-20">
           <div className="inline-flex items-center bg-blue-100 px-6 py-3 rounded-full mb-6 animate-fade-in">
             <Heart className="w-5 h-5 text-blue-600 mr-2 animate-pulse" />
-            <span className="text-blue-700 font-semibold">Nos Services</span>
+            <span className="text-blue-700 font-semibold">{t('main_services.badge')}</span>
           </div>
           
           <h2 className="text-4xl md:text-5xl font-bold text-blue-900 mb-6 animate-slide-up">
-            Nos Domaines d'Excellence
+            {t('main_services.title')}
           </h2>
           
           <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-green-500 mx-auto mb-6 animate-scale-x"></div>
           
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed animate-fade-in-delayed">
-            Découvrez nos domaines d'expertise qui couvrent tous les aspects de votre santé et bien-être
+            {t('main_services.subtitle')}
           </p>
         </div>
 
@@ -144,23 +146,23 @@ const Services = () => {
             <div className="absolute inset-0 bg-white/10 backdrop-blur-sm"></div>
             <div className="relative z-10">
               <h3 className="text-3xl font-bold mb-6 animate-fade-in">
-                Prêt à prendre soin de votre santé ?
+                {t('main_services.cta_title')}
               </h3>
               <p className="text-xl mb-8 text-white animate-fade-in-delayed">
-                Contactez-nous dès aujourd'hui pour découvrir nos services personnalisés
+                {t('main_services.cta_subtitle')}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
                   href="tel:+22231244404"
                   className="bg-white text-blue-900 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 transform"
                 >
-                  📞 Nous contacter
+                  {t('main_services.contact_button')}
                 </a>
                 <a
                   href="#contact"
                   className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-all duration-300"
                 >
-                  Demander un devis
+                  {t('main_services.quote_button')}
                 </a>
               </div>
             </div>

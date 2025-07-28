@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react';
-import { Target, Users, Award, Heart, Lightbulb } from 'lucide-react';
+import { Target, Users, Award, Heart, Lightbulb, Eye } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const About = () => {
+  const { t } = useTranslation();
   const [visibleItems, setVisibleItems] = useState<number[]>([]);
 
   const slides = [
     {
       id: 1,
-      title: "Qui sommes-nous ?",
-      content: "MIMAP est un groupe de médecins généralistes et spécialistes dédiés à la médecine préventive, la santé au travail et la formation certifiée en premiers secours et RCR/CPR (réanimation cardio-pulmonaire).",
+      title: t('about.who_we_are.title'),
+      content: t('about.who_we_are.content'),
       icon: <Users className="w-8 h-8" />,
       color: "blue",
       bgGradient: "from-blue-500/10 to-cyan-500/10",
@@ -17,8 +19,8 @@ const About = () => {
     },
     {
       id: 2,
-      title: "Notre Mission",
-      content: "Notre mission est de placer le bien-être des individus au cœur de toutes nos actions. Spécialistes dévoués à la santé et à la sérénité de toute la famille, quel que soit son âge.",
+      title: t('about.our_mission.title'),
+      content: t('about.our_mission.content'),
       icon: <Heart className="w-8 h-8" />,
       color: "emerald",
       bgGradient: "from-emerald-500/10 to-teal-500/10",
@@ -27,8 +29,8 @@ const About = () => {
     },
     {
       id: 3,
-      title: "Notre Équipe",
-      content: "Notre équipe d'experts, certifiée par des organismes internationaux tels que l'American Heart Association, s'engage à offrir des services de qualité supérieure.",
+      title: t('about.our_team.title'),
+      content: t('about.our_team.content'),
       icon: <Target className="w-8 h-8" />,
       color: "violet",
       bgGradient: "from-violet-500/10 to-purple-500/10",
@@ -37,13 +39,23 @@ const About = () => {
     },
     {
       id: 4,
-      title: "Nos Partenariats",
-      content: "Nous avons eu le privilège de collaborer avec des institutions prestigieuses comme la Banque mondiale et des compagnies majeures telles que Tasiast et Aura Energy.",
+      title: t('about.our_values.title'),
+      content: t('about.our_values.content'),
       icon: <Award className="w-8 h-8" />,
       color: "amber",
       bgGradient: "from-amber-500/10 to-orange-500/10",
       borderGradient: "from-amber-500 to-orange-500",
       glowColor: "amber-500/20"
+    },
+    {
+      id: 5,
+      title: t('about.our_vision.title'),
+      content: t('about.our_vision.content'),
+      icon: <Eye className="w-8 h-8" />,
+      color: "indigo",
+      bgGradient: "from-indigo-500/10 to-blue-500/10",
+      borderGradient: "from-indigo-500 to-blue-500",
+      glowColor: "indigo-500/20"
     }
   ];
 
@@ -89,27 +101,27 @@ const About = () => {
         <div className="text-center mb-20">
           <div className="inline-flex items-center bg-blue-100 px-6 py-3 rounded-full mb-6 animate-fade-in">
             <Heart className="w-5 h-5 text-blue-600 mr-2 animate-pulse" />
-            <span className="text-blue-700 font-semibold">À propos de MIMAP</span>
+            <span className="text-blue-700 font-semibold">{t('about.section_badge')}</span>
           </div>
           
           <h2 className="text-4xl md:text-5xl font-bold text-blue-900 mb-6 animate-slide-up">
-            Qui sommes nous ?
+            {t('about.page_title')}
           </h2>
           
           <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-green-500 mx-auto mb-6 animate-scale-x"></div>
           
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed animate-fade-in-delayed">
-            Votre partenaire de confiance pour la santé et le bien-être de toute la famille
+            {t('about.subtitle')}
           </p>
         </div>
 
-        {/* Grid des slides avec animations */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
+        {/* Grid des slides avec animations - Responsive pour 5 cartes */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-20">
           {slides.map((slide, index) => (
             <div
               key={slide.id}
               data-index={index}
-              className={`about-card bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4 group cursor-pointer border border-gray-100 overflow-hidden relative ${
+              className={`about-card bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4 group cursor-pointer border border-gray-100 overflow-hidden relative ${
                 visibleItems.includes(index) 
                   ? 'animate-slide-up-fade opacity-100' 
                   : 'opacity-0 translate-y-8'
@@ -123,7 +135,7 @@ const About = () => {
               <div className={`absolute inset-0 bg-gradient-to-br ${slide.borderGradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
               
               {/* Icône avec animation */}
-              <div className={`w-16 h-16 rounded-full flex items-center justify-center mb-6 group-hover:scale-125 transition-all duration-500 relative z-10 shadow-md bg-gradient-to-r ${slide.borderGradient}`}>
+              <div className={`w-14 h-14 rounded-full flex items-center justify-center mb-4 group-hover:scale-125 transition-all duration-500 relative z-10 shadow-md bg-gradient-to-r ${slide.borderGradient}`}>
                 <div className="text-white">
                   {slide.icon}
                 </div>
@@ -131,11 +143,11 @@ const About = () => {
               
               {/* Contenu */}
               <div className="relative z-10">
-                <h3 className="text-xl font-bold text-gray-800 mb-4 group-hover:text-gray-900 transition-colors">
+                <h3 className="text-lg font-bold text-gray-800 mb-3 group-hover:text-gray-900 transition-colors">
                   {slide.title}
                 </h3>
                 
-                <p className="text-gray-600 leading-relaxed mb-6 group-hover:text-gray-700 transition-colors">
+                <p className="text-sm text-gray-600 leading-relaxed mb-4 group-hover:text-gray-700 transition-colors line-clamp-4">
                   {slide.content}
                 </p>
               </div>
@@ -144,7 +156,7 @@ const About = () => {
               <div className="absolute inset-0 border-2 border-transparent group-hover:border-blue-200 rounded-2xl transition-all duration-500"></div>
               
               {/* Numéro de slide */}
-              <div className="absolute bottom-4 right-4 w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-sm font-bold text-gray-600">
+              <div className="absolute bottom-3 right-3 w-6 h-6 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-xs font-bold text-gray-600">
                 {slide.id}
               </div>
             </div>
@@ -170,7 +182,7 @@ const About = () => {
               
               {/* Titre */}
               <h3 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-8 group-hover:text-gray-900 transition-colors">
-                💡 Notre Objectif
+                💡 {t('about.objective_title')}
               </h3>
               
               {/* Ligne décorative */}
@@ -179,16 +191,16 @@ const About = () => {
               {/* Contenu principal */}
               <div className="text-center">
                 <p className="text-xl md:text-2xl text-gray-700 leading-relaxed font-medium group-hover:text-gray-800 transition-colors">
-                  Accompagner chaque membre de votre famille et votre organisation à se sentir 
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-green-600 font-bold"> protégé</span>, 
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-purple-600 font-bold"> épanoui </span>
-                  et prêt à relever tous les défis.
+                  {t('about.objective_content')} 
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-green-600 font-bold"> {t('about.objective_protected')}</span>, 
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-purple-600 font-bold"> {t('about.objective_fulfilled')} </span>
+                  {t('about.objective_ready')}
                 </p>
                 
                 <div className="mt-8 p-6 bg-gradient-to-r from-blue-50 to-green-50 rounded-2xl border border-blue-100 group-hover:border-blue-200 transition-colors">
                   <p className="text-lg text-gray-700 font-semibold">
-                    Ensemble, faisons de la santé et du bien-être un 
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-green-600"> mode de vie</span>.
+                    {t('about.objective_conclusion')} 
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-green-600"> {t('about.objective_lifestyle')}</span>.
                   </p>
                 </div>
               </div>
@@ -256,6 +268,13 @@ const About = () => {
         .animate-scale-x {
           animation: scale-x 0.8s ease-out 0.5s both;
           transform-origin: center;
+        }
+
+        .line-clamp-4 {
+          display: -webkit-box;
+          -webkit-line-clamp: 4;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
         }
       `}</style>
     </section>

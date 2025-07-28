@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Heart } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const Presentation = () => {
+  const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -35,11 +37,11 @@ const Presentation = () => {
         <div className="text-center mb-12 sm:mb-16 md:mb-20">
           <div className="inline-flex items-center bg-blue-100 px-4 py-2 sm:px-6 sm:py-3 rounded-full mb-4 sm:mb-6 animate-fade-in">
             <Heart className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 mr-2 animate-pulse" />
-            <span className="text-blue-700 font-semibold text-sm sm:text-base">Une courte vidéo de présentation de MIMAP</span>
+            <span className="text-blue-700 font-semibold text-sm sm:text-base">{t('presentation.badge')}</span>
           </div>
-
+          
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-blue-900 mb-4 sm:mb-6 animate-slide-up px-4">
-            Présentation de MIMAP
+            {t('presentation.title')}
           </h2>
         </div>
 
@@ -58,8 +60,10 @@ const Presentation = () => {
                 </video>
               </div>
             </div>
+
             {/* Badge qualité */}
             <div className="absolute top-3 left-3 sm:top-4 sm:left-4 md:top-6 md:left-6 px-2 py-1 sm:px-3 sm:py-1.5 md:px-4 md:py-2 bg-black/50 backdrop-blur-sm rounded-full text-white text-xs sm:text-sm font-medium">
+              {t('presentation.quality_badge')}
             </div>
           </div>
         </div>
@@ -79,11 +83,11 @@ const Presentation = () => {
         .animate-fade-in {
           animation: fade-in 0.8s ease-out;
         }
-
+        
         .animate-slide-up {
           animation: slide-up 0.8s ease-out;
         }
-
+        
         @media (prefers-reduced-motion: reduce) {
           .animate-pulse, .animate-fade-in, .animate-slide-up {
             animation: none;

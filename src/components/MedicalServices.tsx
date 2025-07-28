@@ -1,7 +1,9 @@
 import { Phone, Briefcase, ChevronLeft, ChevronRight, Stethoscope, Heart, Shield, X } from 'lucide-react';
 import { useState, useEffect, SetStateAction } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const MedicalServices = () => {
+  const { t } = useTranslation();
   const [selectedService, setSelectedService] = useState<number | null>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [itemsPerSlide, setItemsPerSlide] = useState(4);
@@ -9,76 +11,76 @@ const MedicalServices = () => {
 
   const medicalServices = [
     {
-      name: "Médecine générale",
-      description: "Suivi global de la santé.",
-      doctor: "Dr. Amadou Kane, Dr. Fatimetou Kane",
+      name: t('services.medical_services.general_medicine.name'),
+      description: t('services.medical_services.general_medicine.description'),
+      doctor: t('services.medical_services.general_medicine.doctor'),
       image: "/medecin-generaliste.jpg",
       icon: Stethoscope,
       gradient: "from-blue-500 to-blue-600",
-      category: "Généraliste"
+      category: t('services.medical_services.general_medicine.category')
     },
     {
-      name: "Médecine de famille",
-      description: "Approche holistique centrée sur le bien-être familial",
-      doctor: "Dr. Amadou Kane et Dr. Cheikh Diouf",
+      name: t('services.medical_services.family_medicine.name'),
+      description: t('services.medical_services.family_medicine.description'),
+      doctor: t('services.medical_services.family_medicine.doctor'),
       image: "/enfant.png",
       icon: Heart,
       gradient: "from-green-500 to-green-600",
-      category: "Famille"
+      category: t('services.medical_services.family_medicine.category')
     },
     {
-      name: "Pédiatrie",
-      description: "Soins spécialisés pour nourrissons, enfants et adolescents",
-      doctor: "Dr. Rokia Maguirega",
+      name: t('services.medical_services.pediatrics.name'),
+      description: t('services.medical_services.pediatrics.description'),
+      doctor: t('services.medical_services.pediatrics.doctor'),
       image: "/Background image box (3).png",
       icon: Heart,
       gradient: "from-pink-500 to-pink-600",
-      category: "Pédiatrie"
+      category: t('services.medical_services.pediatrics.category')
     },
     {
-      name: "Kinésithérapie respiratoire",
-      description: "Rééducation des troubles respiratoires chez l'enfant et l'adulte.",
-      doctor: "Khadija Faye",
+      name: t('services.medical_services.respiratory_physiotherapy.name'),
+      description: t('services.medical_services.respiratory_physiotherapy.description'),
+      doctor: t('services.medical_services.respiratory_physiotherapy.doctor'),
       image: "/Background image box (4).png",
       icon: Shield,
       gradient: "from-teal-500 to-teal-600",
-      category: "Kinésithérapie"
+      category: t('services.medical_services.respiratory_physiotherapy.category')
     },
     {
-      name: "Psychiatrie",
-      description: "Suivi psychologique, troubles mentaux, thérapies adaptées.",
-      doctor: "Dr. Mamoudou Mohamed Kane",
+      name: t('services.medical_services.psychiatry.name'),
+      description: t('services.medical_services.psychiatry.description'),
+      doctor: t('services.medical_services.psychiatry.doctor'),
       image: "/malade.png",
       icon: Heart,
       gradient: "from-purple-500 to-purple-600",
-      category: "Psychiatrie"
+      category: t('services.medical_services.psychiatry.category')
     },
     {
-      name: "Urologie",
-      description: "Soins du système urinaire et santé masculine.",
-      doctor: "Dr. Habiboulah",
+      name: t('services.medical_services.urology.name'),
+      description: t('services.medical_services.urology.description'),
+      doctor: t('services.medical_services.urology.doctor'),
       image: "/rein.jpg",
       icon: Stethoscope,
       gradient: "from-indigo-500 to-indigo-600",
-      category: "Spécialité"
+      category: t('services.medical_services.urology.category')
     },
     {
-      name: "Infectiologie",
-      description: "Prévention, diagnostic et traitement des maladies infectieuses.",
-      doctor: "Dr. Hassimiou Kebe",
+      name: t('services.medical_services.infectiology.name'),
+      description: t('services.medical_services.infectiology.description'),
+      doctor: t('services.medical_services.infectiology.doctor'),
       image: "/image box (2).png",
       icon: Shield,
       gradient: "from-red-500 to-red-600",
-      category: "Spécialité"
+      category: t('services.medical_services.infectiology.category')
     },
     {
-      name: "Médecine du travail",
-      description: "Suivi médical des employés, bilan pré-embauche, prévention et sécurité en milieu professionnel.",
-      doctor: "Dr. Mohamed Yahya Bowba et Dr. Amadou Kane",
+      name: t('services.medical_services.occupational_medicine.name'),
+      description: t('services.medical_services.occupational_medicine.description'),
+      doctor: t('services.medical_services.occupational_medicine.doctor'),
       image: "/medecin-du-travail.jpg",
       icon: Briefcase,
       gradient: "from-orange-500 to-orange-600",
-      category: "Travail"
+      category: t('services.medical_services.occupational_medicine.category')
     }
   ];
 
@@ -192,17 +194,17 @@ const MedicalServices = () => {
         <div className="text-center mb-12 sm:mb-16 md:mb-20">
           <div className={`inline-flex items-center bg-gradient-to-r from-blue-100 to-green-100 border border-blue-200/50 px-4 py-2 sm:px-6 sm:py-3 rounded-full mb-4 sm:mb-6 shadow-lg backdrop-blur-sm transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-10 opacity-0 scale-95'}`}>
             <Stethoscope className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 mr-2 animate-pulse" />
-            <span className="text-sm sm:text-base text-transparent bg-gradient-to-r from-blue-700 to-green-600 bg-clip-text font-bold">Services Médicaux</span>
+            <span className="text-sm sm:text-base text-transparent bg-gradient-to-r from-blue-700 to-green-600 bg-clip-text font-bold">{t('services.badge')}</span>
           </div>
           
           <h2 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-blue-900 via-green-800 to-teal-700 bg-clip-text text-transparent mb-3 sm:mb-4 md:mb-6 leading-tight transform transition-all duration-1000 delay-200 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            Nos Services Médicaux
+            {t('services.title')}
           </h2>
           
           <div className={`w-16 sm:w-20 md:w-24 lg:w-32 h-1 bg-gradient-to-r from-blue-600 via-green-500 to-teal-500 mx-auto mb-4 sm:mb-6 rounded-full shadow-lg transform transition-all duration-1000 delay-400 ${isVisible ? 'scale-x-100 opacity-100' : 'scale-x-0 opacity-0'}`}></div>
           
           <p className={`text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed px-4 transform transition-all duration-1000 delay-600 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            Une gamme complète de services médicaux pour répondre à tous vos besoins de santé
+            {t('services.subtitle')}
           </p>
         </div>
 
@@ -330,10 +332,10 @@ const MedicalServices = () => {
           {/* Statistiques */}
           <div className="flex justify-center items-center mt-4 sm:mt-6 space-x-4 text-xs sm:text-sm text-gray-500">
             <span className="bg-white/80 backdrop-blur-sm px-2 sm:px-3 py-1 rounded-full shadow-lg">
-              {currentSlide + 1} / {totalSlides}
+              {currentSlide + 1} {t('services.slide_counter')} {totalSlides}
             </span>
             <span className="bg-gradient-to-r from-blue-100 to-green-100 px-2 sm:px-3 py-1 rounded-full shadow-lg border border-blue-200/50">
-              {medicalServices.length} Services
+              {medicalServices.length} {t('services.services_count')}
             </span>
           </div>
         </div>
@@ -401,7 +403,7 @@ const MedicalServices = () => {
                         <div className="flex items-start">
                           <Stethoscope className="w-6 h-6 text-blue-600 mr-3 mt-1 flex-shrink-0" />
                           <div>
-                            <h4 className="font-semibold text-gray-800 mb-2">Médecin responsable</h4>
+                            <h4 className="font-semibold text-gray-800 mb-2">{t('services.responsible_doctor')}</h4>
                             <p className="text-gray-700 leading-relaxed">
                               {medicalServices[selectedService].doctor}
                             </p>
@@ -415,12 +417,12 @@ const MedicalServices = () => {
                           className="bg-gradient-to-r from-green-500 to-green-600 text-white px-6 py-3 rounded-xl font-medium hover:from-green-600 hover:to-green-700 transition-all duration-300 flex items-center shadow-lg hover:shadow-xl transform hover:scale-105 group"
                         >
                           <Phone className="w-5 h-5 mr-2 group-hover:animate-bounce" />
-                          Prendre Rendez-vous
+                          {t('services.appointment_button')}
                         </a>
                       </div>
 
                       <p className="text-gray-600 text-sm mt-6">
-                        {selectedService + 1} / {medicalServices.length} services
+                        {selectedService + 1} {t('services.slide_counter')} {medicalServices.length} {t('services.services_count').toLowerCase()}
                       </p>
                     </div>
                   </div>

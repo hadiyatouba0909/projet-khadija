@@ -1,23 +1,25 @@
 import { useState, useEffect, SetStateAction } from 'react';
 import { Menu, X, Phone, Mail, MapPin, Globe, ChevronDown } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const Header = () => {
+  const { t, i18n } = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [isScrolled, setIsScrolled] = useState(false);
   const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
-  const [currentLanguage, setCurrentLanguage] = useState('fr');
+  const [currentLanguage, setCurrentLanguage] = useState(i18n.language || 'fr');
 
   const navItems = [
-    { name: 'Accueil', href: '#home', id: 'home' },
-    { name: 'À propos', href: '#about', id: 'about' },
-    { name: 'Présentation', href: '#presentation', id: 'presentation' },
-    { name: 'Services', href: '#medical-services', id: 'medical-services' },
-    { name: 'Équipe', href: '#team', id: 'team' },
-    { name: 'Actualités', href: '#news', id: 'news' },
-    { name: 'Témoignages', href: '#testimonials', id: 'testimonials' },
-    { name: 'Galerie', href: '#gallery', id: 'gallery' },
-    { name: 'Contact', href: '#contact', id: 'contact' },
+    { name: t('nav.home'), href: '#home', id: 'home' },
+    { name: t('nav.about'), href: '#about', id: 'about' },
+    { name: t('nav.presentation'), href: '#presentation', id: 'presentation' },
+    { name: t('nav.services'), href: '#medical-services', id: 'medical-services' },
+    { name: t('nav.team'), href: '#team', id: 'team' },
+    { name: t('nav.news'), href: '#news', id: 'news' },
+    { name: t('nav.testimonials'), href: '#testimonials', id: 'testimonials' },
+    { name: t('nav.gallery'), href: '#gallery', id: 'gallery' },
+    { name: t('nav.contact'), href: '#contact', id: 'contact' },
   ];
 
   const languages = [
@@ -25,6 +27,24 @@ const Header = () => {
     { code: 'ar', name: 'العربية', flag: '🇲🇷' },
     { code: 'en', name: 'English', flag: '🇺🇸' },
   ];
+
+  // Écouter les changements de langue
+  useEffect(() => {
+    const handleLanguageChange = (lng: string) => {
+      setCurrentLanguage(lng);
+      // Maintenir la langue dans le document sans changer la direction
+      document.documentElement.lang = lng;
+    };
+
+    i18n.on('languageChanged', handleLanguageChange);
+    
+    // Initialiser la langue
+    handleLanguageChange(i18n.language);
+
+    return () => {
+      i18n.off('languageChanged', handleLanguageChange);
+    };
+  }, [i18n]);
 
   // Détecter le scroll et la section active
   useEffect(() => {
@@ -78,8 +98,7 @@ const Header = () => {
   const handleLanguageChange = (langCode: SetStateAction<string>) => {
     setCurrentLanguage(langCode);
     setIsLanguageMenuOpen(false);
-    // Ici vous pouvez ajouter la logique de changement de langue
-    console.log('Langue changée vers:', langCode);
+    i18n.changeLanguage(langCode as string);
   };
 
   const getCurrentLanguage = () => {
@@ -96,11 +115,11 @@ const Header = () => {
           <div className="flex items-center space-x-6">
             <div className="flex items-center hover:text-blue-200 transition-colors cursor-pointer group">
               <Phone className="w-3 h-3 mr-2 group-hover:animate-bounce" />
-              <span>+222 31244404 / +222 44794404</span>
+              <span>{t('contact_info.phone')}</span>
             </div>
             <div className="flex items-center hover:text-blue-200 transition-colors cursor-pointer group">
               <Mail className="w-3 h-3 mr-2 group-hover:animate-bounce" />
-              <span>cabinetmimap@gmail.com</span>
+              <span>{t('contact_info.email')}</span>
             </div>
           </div>
 
@@ -109,14 +128,14 @@ const Header = () => {
             <div className="flex items-center space-x-2">
               <MapPin className="w-3 h-3" />
               <div className="text-xs">
-                <span className="font-medium">NOUAKCHOTT</span> - <span>Ilot K EXT 929</span>
+                <span className="font-medium">{t('contact_info.address')}</span>
               </div>
             </div>
 
             <div className="flex items-center space-x-2">
               <span>🕐</span>
               <div className="text-xs">
-                <span>Lun-Ven 15h-22h • Sam 10h-17h</span>
+                <span>{t('contact_info.hours')}</span>
               </div>
             </div>
           </div>
@@ -238,7 +257,7 @@ const Header = () => {
               {/* Menu langue mobile */}
               <div className="border-t border-gray-200 pt-4 mt-4">
                 <div className="px-4 py-2 text-sm font-medium text-gray-500 uppercase tracking-wide">
-                  Langue
+                  {t('nav.language')}
                 </div>
                 {languages.map((language) => (
                   <button

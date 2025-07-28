@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Phone, ArrowDown } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const Hero = () => {
+  const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -38,11 +40,11 @@ const Hero = () => {
           <div className="max-w-full sm:max-w-2xl lg:max-w-3xl relative z-20">
             <div className={`transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-blue-900  mb-4 mt-[-110px] sm:mb-6 leading-tight">
-                Votre santé, notre priorité
+                {t('hero.title')}
               </h1>
 
               <p className="text-base sm:text-lg lg:text-xl font-bold text-gray-700 mb-6 sm:mb-8 leading-relaxed max-w-full sm:max-w-lg lg:max-w-xl">
-                MIMAP vous accompagne dans la médecine préventive, la santé familiale, la santé au travail et les formations en premiers secours et RCR/CPR.
+                {t('hero.subtitle')}
               </p>
 
               {/* Boutons d'action améliorés */}
@@ -52,13 +54,13 @@ const Hero = () => {
                   onClick={handleCallClick}
                 >
                   <Phone className="w-5 h-5 mr-2 group-hover:animate-bounce"/>
-                  Prendre RDV
+                  {t('hero.call_button')}
                 </button>
                 <button
                   className="border-2 border-blue-600 text-blue-600 hover:bg-blue-900 hover:text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-xl w-full sm:w-auto transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl group backdrop-blur-sm"
                   onClick={handleDiscoverClick}
                 >
-                  Découvrir MIMAP
+                  {t('hero.discover_button')}
                   <ArrowDown className="w-4 h-4 ml-2 group-hover:animate-bounce inline" />
                 </button>
               </div>

@@ -1,7 +1,9 @@
 import { GraduationCap, ChevronLeft, ChevronRight, Users, Award, Stethoscope } from 'lucide-react';
 import { useState, useEffect, SetStateAction } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const Team = () => {
+  const { t } = useTranslation();
   const [selectedDoctor, setSelectedDoctor] = useState<number | null>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [itemsPerSlide, setItemsPerSlide] = useState(4);
@@ -9,81 +11,81 @@ const Team = () => {
 
   const doctors = [
     {
-      name: "Khadija Faye, MBA, RRT",
-      specialty: "Kinésithérapeute respiratoire",
-      diplôme: "spécialisé en pédiatrie et néonatalogie",
+      name: t('team.doctors.khadija_faye.name'),
+      specialty: t('team.doctors.khadija_faye.specialty'),
+      diploma: t('team.doctors.khadija_faye.diploma'),
       image: "/WhatsApp Image 2025-07-18 at 18.01.24.jpeg",
       specialtyColor: "from-cyan-500 to-cyan-600",
       icon: Users
     },
     {
-      name: "Dr. Amadou Kane",
-      specialty: "Médecin de famille et généraliste",
-      diplôme: "Diplôme d'état de médecine générale",
+      name: t('team.doctors.amadou_kane.name'),
+      specialty: t('team.doctors.amadou_kane.specialty'),
+      diploma: t('team.doctors.amadou_kane.diploma'),
       image: "/Background image box (1).png",
       specialtyColor: "from-blue-500 to-blue-600",
       icon: Stethoscope
     },
     {
-      name: "Dr. Mamoudou Mohamed Kane",
-      specialty: "Psychiatre",
-      diplôme: "Diplôme de spécialisation en psychiatrie",
+      name: t('team.doctors.mamoudou_kane.name'),
+      specialty: t('team.doctors.mamoudou_kane.specialty'),
+      diploma: t('team.doctors.mamoudou_kane.diploma'),
       image: "/user-coverss-3.png",
       specialtyColor: "from-purple-500 to-purple-600",
       icon: Users
     },
     {
-      name: "Dr. Fatimetou Kane",
-      specialty: "Généraliste",
-      diplôme: "Diplôme d'état de médecine générale",
+      name: t('team.doctors.fatimetou_kane.name'),
+      specialty: t('team.doctors.fatimetou_kane.specialty'),
+      diploma: t('team.doctors.fatimetou_kane.diploma'),
       image: "/imagess.png",
       specialtyColor: "from-green-500 to-green-600",
       icon: Stethoscope
     },
     {
-      name: "Dr. Rokia Maguirega",
-      specialty: "Pédiatre",
-      diplôme: "Diplôme de spécialité en pédiatrie",
+      name: t('team.doctors.rokia_maguirega.name'),
+      specialty: t('team.doctors.rokia_maguirega.specialty'),
+      diploma: t('team.doctors.rokia_maguirega.diploma'),
       image: "/image copy.png",
       specialtyColor: "from-pink-500 to-pink-600",
       icon: Users
     },
     {
-      name: "Dr. Fatimata Ba",
-      specialty: "Cardiologue",
-      diplôme: "Diplôme de spécialité en cardiologie",
+      name: t('team.doctors.fatimata_ba.name'),
+      specialty: t('team.doctors.fatimata_ba.specialty'),
+      diploma: t('team.doctors.fatimata_ba.diploma'),
       image: "/Background image box (2).png",
       specialtyColor: "from-red-500 to-red-600",
       icon: Award
     },
     {
-      name: "Dr. Cheikh Diouf",
-      specialty: "Généraliste",
-      diplôme: "Diplôme de spécialité en médecine du sport et drepanocytose",
+      name: t('team.doctors.cheikh_diouf.name'),
+      specialty: t('team.doctors.cheikh_diouf.specialty'),
+      diploma: t('team.doctors.cheikh_diouf.diploma'),
       image: "/WhatsApp Image 2025-07-21 at 13.00.28.jpeg",
       specialtyColor: "from-orange-500 to-orange-600",
       icon: Award
     },
     {
-      name: "Dr. Mohamed Yahya Bowba",
-      specialty: "Généraliste",
-      diplôme: "Diplôme d’état en médecine générale",
+      name: t('team.doctors.yahya_bowba.name'),
+      specialty: t('team.doctors.yahya_bowba.specialty'),
+      diploma: t('team.doctors.yahya_bowba.diploma'),
       image: "/medecin-1024x576.jpg",
       specialtyColor: "from-teal-500 to-teal-600",
       icon: Stethoscope
     },
     {
-      name: "Dr. Habiboulah",
-      specialty: "Urologue",
-      diplôme: "Spécialiste des affections de l'appareil urinaire",
+      name: t('team.doctors.habiboulah.name'),
+      specialty: t('team.doctors.habiboulah.specialty'),
+      diploma: t('team.doctors.habiboulah.diploma'),
       image: "/rein.jpg",
       specialtyColor: "from-indigo-500 to-indigo-600",
       icon: Award
     },
     {
-      name: "Dr. Hassimiou Kebe",
-      specialty: "Infectiologue",
-      diplôme: "Diplôme de spécialité en infectiologie",
+      name: t('team.doctors.hassimiou_kebe.name'),
+      specialty: t('team.doctors.hassimiou_kebe.specialty'),
+      diploma: t('team.doctors.hassimiou_kebe.diploma'),
       image: "/fixed-height sec-.png",
       specialtyColor: "from-emerald-500 to-emerald-600",
       icon: Award
@@ -197,17 +199,17 @@ const Team = () => {
         <div className="text-center mb-12 sm:mb-16 md:mb-20">
           <div className={`inline-flex items-center bg-gradient-to-r from-blue-100 to-green-100 border border-blue-200/50 px-4 py-2 sm:px-6 sm:py-3 rounded-full mb-4 sm:mb-6 shadow-lg backdrop-blur-sm transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-10 opacity-0 scale-95'}`}>
             <Users className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 mr-2 animate-pulse" />
-            <span className="text-sm sm:text-base text-transparent bg-gradient-to-r from-blue-700 to-green-600 bg-clip-text font-bold">Notre Équipe</span>
+            <span className="text-sm sm:text-base text-transparent bg-gradient-to-r from-blue-700 to-green-600 bg-clip-text font-bold">{t('team.badge')}</span>
           </div>
 
           <h2 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-blue-900 via-purple-800 to-green-700 bg-clip-text text-transparent mb-3 sm:mb-4 md:mb-6 leading-tight transform transition-all duration-1000 delay-200 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            Notre Équipe Médicale
+            {t('team.title')}
           </h2>
 
           <div className={`w-16 sm:w-20 md:w-24 lg:w-32 h-1 bg-gradient-to-r from-blue-600 via-purple-500 to-green-500 mx-auto mb-4 sm:mb-6 rounded-full shadow-lg transform transition-all duration-1000 delay-400 ${isVisible ? 'scale-x-100 opacity-100' : 'scale-x-0 opacity-0'}`}></div>
 
           <p className={`text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed px-4 transform transition-all duration-1000 delay-600 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            Une équipe de professionnels dévoués et expérimentés pour votre santé
+            {t('team.subtitle')}
           </p>
         </div>
 
@@ -290,7 +292,7 @@ const Team = () => {
                                   {doctor.specialty}
                                 </span>
                                 <p className="text-white font-medium text-xs sm:text-sm leading-tight mb-1">{doctor.name}</p>
-                                <p className="text-gray-200 text-xs leading-tight">{doctor.diplôme}</p>
+                                <p className="text-gray-200 text-xs leading-tight">{doctor.diploma}</p>
                               </div>
                             </div>
 
@@ -338,10 +340,10 @@ const Team = () => {
           {/* Statistiques */}
           <div className="flex justify-center items-center mt-4 sm:mt-6 space-x-4 text-xs sm:text-sm text-gray-500">
             <span className="bg-white/80 backdrop-blur-sm px-2 sm:px-3 py-1 rounded-full shadow-lg">
-              {currentSlide + 1} / {totalSlides}
+              {currentSlide + 1} {t('team.slide_counter')} {totalSlides}
             </span>
             <span className="bg-gradient-to-r from-blue-100 to-green-100 px-2 sm:px-3 py-1 rounded-full shadow-lg border border-blue-200/50">
-              {doctors.length} Spécialistes
+              {doctors.length} {t('team.specialists_count')}
             </span>
           </div>
         </div>
@@ -405,16 +407,16 @@ const Team = () => {
                         <div className="flex items-start">
                           <GraduationCap className="w-6 h-6 text-blue-600 mr-3 mt-1 flex-shrink-0" />
                           <div>
-                            <h4 className="font-semibold text-gray-800 mb-2">Formation & Diplômes</h4>
+                            <h4 className="font-semibold text-gray-800 mb-2">{t('team.formation_title')}</h4>
                             <p className="text-gray-700 leading-relaxed">
-                              {doctors[selectedDoctor].diplôme}
+                              {doctors[selectedDoctor].diploma}
                             </p>
                           </div>
                         </div>
                       </div>
 
                       <p className="text-gray-600 text-sm mt-4">
-                        {selectedDoctor + 1} / {doctors.length} spécialistes
+                        {selectedDoctor + 1} {t('team.slide_counter')} {doctors.length} {t('team.specialists_count').toLowerCase()}
                       </p>
                     </div>
                   </div>

@@ -1,24 +1,26 @@
 import { ExternalLink, Facebook, Calendar, ArrowRight, Instagram, Linkedin } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const News = () => {
+  const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
 
   const newsItems = [
     {
-      title: "Journée Porte Ouverte avec SOS Diabète",
-      description: "Une journée de sensibilisation sur le diabète avec des consultations gratuites et des conseils nutritionnels.",
+      title: t('news.news_items.diabetes_awareness.title'),
+      description: t('news.news_items.diabetes_awareness.description'),
       image: "/patient.jpg",
       link: "https://www.facebook.com/photo.php?fbid=1044432507470860&set=pb.100057123622796.-2207520000&type=3",
-      category: "Sensibilisation",
+      category: t('news.news_items.diabetes_awareness.category'),
       gradient: "from-blue-500 to-blue-600"
     },
     {
-      title: "Formation BLS/CPR pour le personnel de la banque mondiale",
-      description: "Formation aux premiers secours certifiée par l'American Heart Association.",
+      title: t('news.news_items.bls_training.title'),
+      description: t('news.news_items.bls_training.description'),
       image: "/494916040_1211646377416138_87313405854168224_n.jpg",
       link: "https://www.facebook.com/photo.php?fbid=1211646367416139&set=pb.100057123622796.-2207520000&type=3",
-      category: "Formation",
+      category: t('news.news_items.bls_training.category'),
       gradient: "from-green-500 to-green-600"
     }
   ];
@@ -85,17 +87,17 @@ const News = () => {
         <div className="text-center mb-12 sm:mb-16 md:mb-20">
           <div className={`inline-flex items-center bg-gradient-to-r from-green-100 to-blue-100 border border-green-200/50 px-4 py-2 sm:px-6 sm:py-3 rounded-full mb-4 sm:mb-6 shadow-lg backdrop-blur-sm transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-10 opacity-0 scale-95'}`}>
             <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-green-600 mr-2 animate-pulse" />
-            <span className="text-sm sm:text-base text-transparent bg-gradient-to-r from-green-700 to-blue-600 bg-clip-text font-bold">Actualités & Blog</span>
+            <span className="text-sm sm:text-base text-transparent bg-gradient-to-r from-green-700 to-blue-600 bg-clip-text font-bold">{t('news.badge')}</span>
           </div>
           
           <h2 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-green-900 via-blue-800 to-teal-700 bg-clip-text text-transparent mb-3 sm:mb-4 md:mb-6 leading-tight transform transition-all duration-1000 delay-200 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            Actualités et Blog
+            {t('news.title')}
           </h2>
           
           <div className={`w-16 sm:w-20 md:w-24 lg:w-32 h-1 bg-gradient-to-r from-green-600 via-blue-500 to-teal-500 mx-auto mb-4 sm:mb-6 rounded-full shadow-lg transform transition-all duration-1000 delay-400 ${isVisible ? 'scale-x-100 opacity-100' : 'scale-x-0 opacity-0'}`}></div>
           
           <p className={`text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed px-4 transform transition-all duration-1000 delay-600 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            Restez informés de nos dernières actualités, campagnes de sensibilisation et événements
+            {t('news.subtitle')}
           </p>
         </div>
 
@@ -155,7 +157,7 @@ const News = () => {
                     className={`inline-flex items-center bg-gradient-to-r ${item.gradient} text-white px-4 py-2 sm:px-6 sm:py-3 rounded-xl font-medium hover:shadow-lg transition-all duration-300 transform hover:scale-105 group/btn text-sm sm:text-base`}
                   >
                     <Facebook className="w-4 h-4 sm:w-5 sm:h-5 mr-2 group-hover/btn:animate-bounce" />
-                    <span className="hidden sm:inline">Voir sur </span>Facebook
+                    <span className="hidden sm:inline">{t('news.see_on_facebook').replace('Facebook', '')}</span>Facebook
                     <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
                   </a>
                   
@@ -174,10 +176,10 @@ const News = () => {
           <div className={`text-center mt-12 sm:mt-16 md:mt-20 transform transition-all duration-1000 delay-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 shadow-xl border border-white/50 max-w-2xl mx-auto">
               <h3 className="text-xl sm:text-2xl md:text-3xl font-bold bg-gradient-to-r from-green-800 to-blue-700 bg-clip-text text-transparent mb-3 sm:mb-4">
-                Restez connectés !
+                {t('news.stay_connected')}
               </h3>
               <p className="text-sm sm:text-base md:text-lg text-gray-600 mb-6 sm:mb-8 leading-relaxed">
-                Suivez-nous sur nos réseaux sociaux pour ne manquer aucune de nos actualités et événements
+                {t('news.follow_us')}
               </p>
               
               {/* Boutons de réseaux sociaux */}

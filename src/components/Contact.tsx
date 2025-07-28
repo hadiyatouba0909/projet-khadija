@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { MapPin, Phone, Mail, Clock, Facebook, Instagram, Linkedin, ExternalLink, MessageCircle } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const Contact = () => {
+  const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
 
   // Observer pour les animations
@@ -32,45 +34,40 @@ const Contact = () => {
   const contactInfo = [
     {
       icon: MapPin,
-      title: "Adresse",
-      content: "Ilot K EXT 929, Nouakchott, Mauritanie",
+      title: t('contact.contact_details.address.title'),
+      content: t('contact.contact_details.address.content'),
       gradient: "from-blue-500 to-blue-600",
       bgColor: "bg-blue-100",
       textColor: "text-blue-600",
-      emoji: "📍"
+      emoji: t('contact.contact_details.address.emoji')
     },
     {
       icon: Phone,
-      title: "Téléphone",
-      content: ["+222 31244404", "+222 44794404"],
+      title: t('contact.contact_details.phone.title'),
+      content: t('contact.contact_details.phone.content', { returnObjects: true }) as string[],
       gradient: "from-green-500 to-green-600",
       bgColor: "bg-green-100",
       textColor: "text-green-600",
-      emoji: "📞"
+      emoji: t('contact.contact_details.phone.emoji')
     },
     {
       icon: Mail,
-      title: "Email",
-      content: "cabinetmimap@gmail.com",
+      title: t('contact.contact_details.email.title'),
+      content: t('contact.contact_details.email.content'),
       gradient: "from-purple-500 to-purple-600",
       bgColor: "bg-purple-100",
       textColor: "text-purple-600",
-      emoji: "✉️",
+      emoji: t('contact.contact_details.email.emoji'),
       isLink: true
     },
     {
       icon: Clock,
-      title: "Horaires d'ouverture",
-      content: {
-        "Lun–Jeu": "15h-22h",
-        "Ven": "16h-22h",
-        "Sam": "10h-17h",
-        "Dim": "Fermé"
-      },
+      title: t('contact.contact_details.hours.title'),
+      content: t('contact.contact_details.hours.schedule', { returnObjects: true }) as Record<string, string>,
       gradient: "from-orange-500 to-orange-600",
       bgColor: "bg-orange-100",
       textColor: "text-orange-600",
-      emoji: "🕒"
+      emoji: t('contact.contact_details.hours.emoji')
     }
   ];
 
@@ -111,17 +108,17 @@ const Contact = () => {
         <div className="text-center mb-12 sm:mb-16 md:mb-20">
           <div className={`inline-flex items-center bg-gradient-to-r from-blue-100 to-green-100 border border-blue-200/50 px-4 py-2 sm:px-6 sm:py-3 rounded-full mb-4 sm:mb-6 shadow-lg backdrop-blur-sm transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-10 opacity-0 scale-95'}`}>
             <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 mr-2 animate-pulse" />
-            <span className="text-sm sm:text-base text-transparent bg-gradient-to-r from-blue-700 to-green-600 bg-clip-text font-bold">Contactez-nous</span>
+            <span className="text-sm sm:text-base text-transparent bg-gradient-to-r from-blue-700 to-green-600 bg-clip-text font-bold">{t('contact.badge')}</span>
           </div>
           
           <h2 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-blue-900 via-green-800 to-teal-700 bg-clip-text text-transparent mb-3 sm:mb-4 md:mb-6 leading-tight transform transition-all duration-1000 delay-200 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            Contact
+            {t('contact.title')}
           </h2>
           
           <div className={`w-16 sm:w-20 md:w-24 lg:w-32 h-1 bg-gradient-to-r from-blue-600 via-green-500 to-teal-500 mx-auto mb-4 sm:mb-6 rounded-full shadow-lg transform transition-all duration-1000 delay-400 ${isVisible ? 'scale-x-100 opacity-100' : 'scale-x-0 opacity-0'}`}></div>
           
           <p className={`text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed px-4 transform transition-all duration-1000 delay-600 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            Contactez-nous pour toute question ou pour prendre rendez-vous
+            {t('contact.subtitle')}
           </p>
         </div>
 
@@ -135,7 +132,7 @@ const Contact = () => {
                   <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                 </div>
                 <h3 className="text-xl sm:text-2xl md:text-3xl font-bold bg-gradient-to-r from-blue-800 to-green-700 bg-clip-text text-transparent">
-                  Informations de Contact
+                  {t('contact.contact_info_title')}
                 </h3>
               </div>
               
@@ -176,7 +173,7 @@ const Contact = () => {
                           {Object.entries(info.content).map(([day, time]) => (
                             <div key={day} className="flex justify-between items-center text-sm sm:text-base">
                               <span className="text-gray-700 font-medium">{day}</span>
-                              <span className={`${time === 'Fermé' ? 'text-red-500' : 'text-gray-600'} font-medium`}>
+                              <span className={`${(time.includes('Closed') || time.includes('Fermé') || time.includes('مغلق')) ? 'text-red-500' : 'text-gray-600'} font-medium`}>
                                 {time}
                               </span>
                             </div>
@@ -196,7 +193,7 @@ const Contact = () => {
                   <Facebook className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                 </div>
                 <h3 className="text-xl sm:text-2xl md:text-3xl font-bold bg-gradient-to-r from-pink-800 to-purple-700 bg-clip-text text-transparent">
-                  Suivez-nous
+                  {t('contact.follow_us_title')}
                 </h3>
               </div>
               
@@ -217,7 +214,7 @@ const Contact = () => {
               
               <div className="mt-6 sm:mt-8 p-4 sm:p-6 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl border-l-4 border-blue-400">
                 <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
-                  <span className="font-bold">💬 Restez connectés !</span> Suivez nos actualités, événements et conseils santé sur nos réseaux sociaux.
+                  <span className="font-bold">{t('contact.stay_connected')}</span> {t('contact.follow_description')}
                 </p>
               </div>
             </div>
@@ -230,7 +227,7 @@ const Contact = () => {
                 <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
               </div>
               <h3 className="text-xl sm:text-2xl md:text-3xl font-bold bg-gradient-to-r from-green-800 to-teal-700 bg-clip-text text-transparent">
-                🗺️ Localisation
+                {t('contact.location_title')}
               </h3>
             </div>
             
@@ -256,7 +253,7 @@ const Contact = () => {
                 className="inline-flex items-center bg-gradient-to-r from-blue-600 to-green-600 text-white px-4 sm:px-6 py-3 sm:py-4 rounded-xl font-medium hover:from-blue-700 hover:to-green-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 group text-sm sm:text-base"
               >
                 <MapPin className="w-4 h-4 sm:w-5 sm:h-5 mr-2 group-hover:animate-bounce" />
-                Voir sur Google Maps
+                {t('contact.view_on_google_maps')}
                 <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5 ml-2 group-hover:translate-x-1 transition-transform" />
               </a>
             </div>
@@ -266,10 +263,10 @@ const Contact = () => {
                 <MapPin className="w-5 h-5 text-green-600 mr-3 mt-0.5 flex-shrink-0" />
                 <div>
                   <p className="text-sm sm:text-base text-gray-700 font-medium mb-1">
-                    📍 <span className="font-bold">Adresse complète :</span>
+                    <span className="font-bold">{t('contact.complete_address')}</span>
                   </p>
                   <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
-                    Ilot K EXT 929, Nouakchott, Mauritanie
+                    {t('contact.contact_details.address.content')}
                   </p>
                 </div>
               </div>

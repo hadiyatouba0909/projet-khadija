@@ -1,0 +1,49 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "presentation": "Presentation",
+    "services": "Services",
+    "team": "Team",
+    "news": "News",
+    "testimonials": "Testimonials",
+    "gallery": "Gallery",
+    "contact": "Contact",
+    "language": "Language"
+  },
+  "contact_info": {
+    "phone": "+222 31244404 / +222 44794404",
+    "email": "cabinetmimap@gmail.com",
+    "address": "NOUAKCHOTT - Ilot K EXT 929",
+    "hours": "Mon-Fri 3pm-10pm • Sat 10am-5pm"
+  },
+  "hero": {
+    "title": "Your health, our priority",
+    "subtitle": "MIMAP supports you in preventive medicine, family health, occupational health and first aid and CPR training.",
+    "discover_button": "Discover our services",
+    "call_button": "Call us"
+  },
+  "about": {
+    "who_we_are": {
+      "title": "Who are we?",
+      "content": "MIMAP is a group of general practitioners and specialists dedicated to preventive medicine, occupational health and certified training in first aid and CPR (cardiopulmonary resuscitation)."
+    },
+    "our_mission": {
+      "title": "Our Mission",
+      "content": "Our mission is to place individual well-being at the heart of all our actions. Specialists devoted to the health and serenity of the whole family, regardless of age."
+    },
+    "our_team": {
+      "title": "Our Team",
+      "content": "A team of experienced healthcare professionals, united by the passion to heal and prevent. We combine medical expertise and human approach to offer you the best care."
+    },
+    "our_values": {
+      "title": "Our Values",
+      "content": "Excellence, benevolence, innovation and proximity guide our daily practice. We believe in accessible, preventive and patient-centered medicine."
+    },
+    "our_vision": {
+      "title": "Our Vision",
+      "content": "To be your trusted health partner, offering innovative and personalized medical solutions to improve your quality of life."
+    }
+  }
+}
+

@@ -1,7 +1,9 @@
 import { Heart, Phone, Mail, MapPin, Facebook, Instagram, Linkedin, ArrowUp } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const Footer = () => {
+  const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
 
@@ -45,21 +47,21 @@ const Footer = () => {
   };
 
   const quickLinks = [
-    { name: "Accueil", href: "#home" },
-    { name: "À propos", href: "#about" },
-    { name: "Présentation", href: "#presentation" },
-    { name: "Services", href: "#medical-services" },
-    { name: "Équipe", href: "#team" },
-    { name: "Actualités", href: "#news" },
-    { name: "Témoignages", href: "#testimonials" },
-    { name: "Galerie", href: "#gallery" },
-    { name: "Contact", href: "#contact" }
+    { name: t('nav.home'), href: "#home" },
+    { name: t('nav.about'), href: "#about" },
+    { name: t('nav.presentation'), href: "#presentation" },
+    { name: t('nav.services'), href: "#medical-services" },
+    { name: t('nav.team'), href: "#team" },
+    { name: t('nav.news'), href: "#news" },
+    { name: t('nav.testimonials'), href: "#testimonials" },
+    { name: t('nav.gallery'), href: "#gallery" },
+    { name: t('nav.contact'), href: "#contact" }
   ];
 
   const contactInfo = [
     {
       icon: MapPin,
-      content: "Ilot K EXT 929, Nouakchott, Mauritanie",
+      content: t('contact_info.address'),
       type: "address"
     },
     {
@@ -69,7 +71,7 @@ const Footer = () => {
     },
     {
       icon: Mail,
-      content: "cabinetmimap@gmail.com",
+      content: t('contact_info.email'),
       type: "email"
     }
   ];
@@ -129,7 +131,7 @@ const Footer = () => {
                 </div>
               </div>             
               <p className="text-blue-100 mb-4 sm:mb-6 leading-relaxed text-sm">
-                Cabinet médical spécialisé en médecine familiale, pédiatrie et santé au travail.
+                {t('footer.description')}
               </p>
               
               <div className="flex space-x-3 mb-4 sm:mb-6">
@@ -140,7 +142,7 @@ const Footer = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`${social.color} text-white p-2 sm:p-3 rounded-full transition-all duration-300 transform hover:scale-110 shadow-lg group`}
-                    title={`Suivre sur ${social.name}`}
+                    title={`${t('footer.follow_on')} ${social.name}`}
                   >
                     <social.icon className="w-4 h-4 group-hover:animate-bounce" />
                   </a>
@@ -153,7 +155,7 @@ const Footer = () => {
                 className="inline-flex items-center bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-2 sm:px-5 sm:py-3 rounded-lg font-medium hover:from-green-600 hover:to-green-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 text-sm"
               >
                 <Phone className="w-4 h-4 mr-2" />
-                Prendre RDV
+                {t('footer.book_appointment')}
               </a>
             </div>
 
@@ -161,7 +163,7 @@ const Footer = () => {
             <div className={`transform transition-all duration-1000 delay-200 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
               <h4 className="text-lg font-bold mb-4 text-white flex items-center">
                 <div className="w-2 h-2 bg-blue-400 rounded-full mr-3 animate-pulse"></div>
-                📍 Contact
+                📍 {t('footer.contact_title')}
               </h4>
               <div className="space-y-3">
                 {contactInfo.map((info, index) => (
@@ -204,7 +206,7 @@ const Footer = () => {
             <div className={`transform transition-all duration-1000 delay-400 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
               <h4 className="text-lg font-bold mb-4 text-white flex items-center">
                 <div className="w-2 h-2 bg-green-400 rounded-full mr-3 animate-pulse"></div>
-                🔗 Navigation
+                🔗 {t('footer.navigation_title')}
               </h4>
               <div className="space-y-2">
                 {quickLinks.map((link, index) => (
@@ -224,25 +226,25 @@ const Footer = () => {
             <div className={`transform transition-all duration-1000 delay-600 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
               <h4 className="text-lg font-bold mb-4 text-white flex items-center">
                 <div className="w-2 h-2 bg-purple-400 rounded-full mr-3 animate-pulse"></div>
-                🤝 Partenaires
+                🤝 {t('footer.partners_title')}
               </h4>
               <div className="space-y-3 mb-6">
                 <div className="text-sm text-blue-200">
-                  <p>• Banque Mondiale</p>
-                  <p>• Kinross Tasiast</p>
+                  <p>• {t('footer.world_bank')}</p>
+                  <p>• {t('footer.kinross_tasiast')}</p>
                 </div>
               </div>
 
               {/* Horaires */}
               <h5 className="text-sm font-semibold text-white mb-3 flex items-center">
                 <span className="mr-2">🕐</span>
-                Horaires
+                {t('footer.schedule_title')}
               </h5>
               <div className="text-xs text-blue-200 space-y-1">
-                <p>Lun-Jeu : 15h-22h</p>
-                <p>Ven : 16h-22h</p>
-                <p>Sam : 10h-17h</p>
-                <p>Dim : Fermé</p>
+                <p>{t('footer.schedule_mon_thu')}</p>
+                <p>{t('footer.schedule_fri')}</p>
+                <p>{t('footer.schedule_sat')}</p>
+                <p>{t('footer.schedule_sun')}</p>
               </div>
             </div>
 
@@ -252,14 +254,14 @@ const Footer = () => {
           <div className={`border-t border-blue-700/50 mt-6 sm:mt-8 pt-4 sm:pt-6 transform transition-all duration-1000 delay-800 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
             <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
               <p className="text-blue-200 text-xs sm:text-sm text-center md:text-left">
-                © 2025 <span className="font-semibold">MIMAP</span> - Mauritania Internal Medicine and Pediatrics. 
+                {t('footer.copyright')} <span className="font-semibold">MIMAP</span> - {t('footer.company_full_name')}. 
                 <br className="sm:hidden" />
-                <span className="hidden sm:inline"> </span>Tous droits réservés.
+                <span className="hidden sm:inline"> </span>{t('footer.rights_reserved')}.
               </p>
               <div className="flex items-center text-blue-200 text-xs sm:text-sm">
-                <span>Fait avec</span>
+                <span>{t('footer.made_with')}</span>
                 <Heart className="w-3 h-3 sm:w-4 sm:h-4 text-red-400 mx-1 sm:mx-2 animate-pulse" />
-                <span>pour votre santé</span>
+                <span>{t('footer.for_your_health')}</span>
               </div>
             </div>
           </div>
@@ -271,7 +273,7 @@ const Footer = () => {
         <button
           onClick={scrollToTop}
           className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-110 z-50 flex items-center justify-center group"
-          aria-label="Retour en haut"
+          aria-label={t('footer.back_to_top')}
         >
           <ArrowUp className="w-5 h-5 sm:w-6 sm:h-6 group-hover:animate-bounce" />
         </button>

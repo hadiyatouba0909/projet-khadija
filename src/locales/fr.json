@@ -1,0 +1,49 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "presentation": "Présentation",
+    "services": "Services",
+    "team": "Équipe",
+    "news": "Actualités",
+    "testimonials": "Témoignages",
+    "gallery": "Galerie",
+    "contact": "Contact",
+    "language": "Langue"
+  },
+  "contact_info": {
+    "phone": "+222 31244404 / +222 44794404",
+    "email": "cabinetmimap@gmail.com",
+    "address": "NOUAKCHOTT - Ilot K EXT 929",
+    "hours": "Lun-Ven 15h-22h • Sam 10h-17h"
+  },
+  "hero": {
+    "title": "Votre santé, notre priorité",
+    "subtitle": "MIMAP vous accompagne dans la médecine préventive, la santé familiale, la santé au travail et les formations en premiers secours et RCR/CPR.",
+    "discover_button": "Découvrir nos services",
+    "call_button": "Nous appeler"
+  },
+  "about": {
+    "who_we_are": {
+      "title": "Qui sommes-nous ?",
+      "content": "MIMAP est un groupe de médecins généralistes et spécialistes dédiés à la médecine préventive, la santé au travail et la formation certifiée en premiers secours et RCR/CPR (réanimation cardio-pulmonaire)."
+    },
+    "our_mission": {
+      "title": "Notre Mission",
+      "content": "Notre mission est de placer le bien-être des individus au cœur de toutes nos actions. Spécialistes dévoués à la santé et à la sérénité de toute la famille, quel que soit son âge."
+    },
+    "our_team": {
+      "title": "Notre Équipe",
+      "content": "Une équipe de professionnels de santé expérimentés, unis par la passion de soigner et de prévenir. Nous combinons expertise médicale et approche humaine pour vous offrir les meilleurs soins."
+    },
+    "our_values": {
+      "title": "Nos Valeurs",
+      "content": "Excellence, bienveillance, innovation et proximité guident notre pratique quotidienne. Nous croyons en une médecine accessible, préventive et centrée sur le patient."
+    },
+    "our_vision": {
+      "title": "Notre Vision",
+      "content": "Être le partenaire de confiance de votre santé, en proposant des solutions médicales innovantes et personnalisées pour améliorer votre qualité de vie."
+    }
+  }
+}
+

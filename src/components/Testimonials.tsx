@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react';
 import { Star, Quote, ExternalLink, Users, Award, Heart, Building } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const Testimonials = () => {
+  const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
 
   const testimonials = [
     {
-      name: "Famille Diallo",
-      role: "Patient fidèle",
-      content: "L'équipe de MIMAP nous accompagne depuis des années. Leur professionnalisme et leur bienveillance font toute la différence.",
+      name: t('testimonials.testimonials_list.famille_diallo.name'),
+      role: t('testimonials.testimonials_list.famille_diallo.role'),
+      content: t('testimonials.testimonials_list.famille_diallo.content'),
       rating: 5,
       image: "https://cdn-icons-png.flaticon.com/512/3065/3065871.png",
       type: "patient",
@@ -16,9 +18,9 @@ const Testimonials = () => {
       icon: Heart
     },
     {
-      name: "Kinross Tasiast",
-      role: "Partenaire industriel",
-      content: "MIMAP a fourni des services de santé au travail exceptionnels pour nos équipes. Leur expertise est remarquable.",
+      name: t('testimonials.testimonials_list.kinross_tasiast.name'),
+      role: t('testimonials.testimonials_list.kinross_tasiast.role'),
+      content: t('testimonials.testimonials_list.kinross_tasiast.content'),
       rating: 5,
       image: "https://lecalame.info/sites/default/files/kinross%20tasiast_1.png",
       type: "corporate",
@@ -26,9 +28,9 @@ const Testimonials = () => {
       icon: Building
     },
     {
-      name: "Banque Mondiale",
-      role: "Thierno Ba Spécialiste Santé – Banque mondiale, Mauritanie",
-      content: "Merci MIMAP pour deux excellentes sessions de formation  RCR et BLS pour le personnel du bureau de la Banque mondiale en Mauritanie.Des formateurs expérimentés, des contenus adaptés, des exercices pratiques pertinents — une expérience professionnelle et enrichissante, saluée par tous les participants.Je recommande vivement cette équipe pour toute formation BLS et RCR.",
+      name: t('testimonials.testimonials_list.world_bank.name'),
+      role: t('testimonials.testimonials_list.world_bank.role'),
+      content: t('testimonials.testimonials_list.world_bank.content'),
       rating: 5,
       image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuTRpMVHHf9-NPAXTStkujbW38fSD4HeNBZQ&s",
       type: "institutional",
@@ -39,20 +41,20 @@ const Testimonials = () => {
 
   const mediaLinks = [
     {
-      title: "Portrait de Khadija Faye, fondatrice de MIMAP",
-      source: "Kassataya",
+      title: t('testimonials.media_articles.kassataya_interview.title'),
+      source: t('testimonials.media_articles.kassataya_interview.source'),
       url: "https://cridem.org/C_Info.php?article=772291",
-      description: "Découvrez le parcours inspirant de notre fondatrice",
+      description: t('testimonials.media_articles.kassataya_interview.description'),
       gradient: "from-orange-500 to-orange-600",
-      category: "Interview"
+      category: t('testimonials.media_articles.kassataya_interview.category')
     },
     {
-      title: "MIMAP dans les médias",
-      source: "Future Afrique",
+      title: t('testimonials.media_articles.future_afrique.title'),
+      source: t('testimonials.media_articles.future_afrique.source'),
       url: "https://futureafrique.net/node/17606",
-      description: "Notre engagement pour la santé en Mauritanie",
+      description: t('testimonials.media_articles.future_afrique.description'),
       gradient: "from-teal-500 to-teal-600",
-      category: "Article"
+      category: t('testimonials.media_articles.future_afrique.category')
     }
   ];
 
@@ -94,17 +96,17 @@ const Testimonials = () => {
         <div className="text-center mb-12 sm:mb-16 md:mb-20">
           <div className={`inline-flex items-center bg-gradient-to-r from-purple-100 to-blue-100 border border-purple-200/50 px-4 py-2 sm:px-6 sm:py-3 rounded-full mb-4 sm:mb-6 shadow-lg backdrop-blur-sm transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-10 opacity-0 scale-95'}`}>
             <Users className="w-4 h-4 sm:w-5 sm:h-5 text-purple-600 mr-2 animate-pulse" />
-            <span className="text-sm sm:text-base text-transparent bg-gradient-to-r from-purple-700 to-blue-600 bg-clip-text font-bold">Témoignages & Avis</span>
+            <span className="text-sm sm:text-base text-transparent bg-gradient-to-r from-purple-700 to-blue-600 bg-clip-text font-bold">{t('testimonials.badge')}</span>
           </div>
           
           <h2 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-purple-900 via-blue-800 to-pink-700 bg-clip-text text-transparent mb-3 sm:mb-4 md:mb-6 leading-tight transform transition-all duration-1000 delay-200 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            Témoignages et Avis
+            {t('testimonials.title')}
           </h2>
           
           <div className={`w-16 sm:w-20 md:w-24 lg:w-32 h-1 bg-gradient-to-r from-purple-600 via-blue-500 to-pink-500 mx-auto mb-4 sm:mb-6 rounded-full shadow-lg transform transition-all duration-1000 delay-400 ${isVisible ? 'scale-x-100 opacity-100' : 'scale-x-0 opacity-0'}`}></div>
           
           <p className={`text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed px-4 transform transition-all duration-1000 delay-600 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            Découvrez ce que nos patients et partenaires disent de nos services
+            {t('testimonials.subtitle')}
           </p>
         </div>
 
@@ -175,10 +177,10 @@ const Testimonials = () => {
           <div className="text-center mb-8 sm:mb-12">
             <div className="inline-flex items-center bg-gradient-to-r from-orange-100 to-teal-100 px-4 py-2 sm:px-6 sm:py-3 rounded-full mb-4 sm:mb-6 shadow-lg">
               <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5 text-orange-600 mr-2 animate-pulse" />
-              <span className="text-sm sm:text-base text-transparent bg-gradient-to-r from-orange-700 to-teal-600 bg-clip-text font-bold">Dans les Médias</span>
+              <span className="text-sm sm:text-base text-transparent bg-gradient-to-r from-orange-700 to-teal-600 bg-clip-text font-bold">{t('testimonials.media_badge')}</span>
             </div>
             <h3 className="text-xl sm:text-2xl md:text-3xl font-bold bg-gradient-to-r from-orange-800 to-teal-700 bg-clip-text text-transparent">
-              Couverture Médiatique
+              {t('testimonials.media_title')}
             </h3>
           </div>
           
@@ -213,7 +215,7 @@ const Testimonials = () => {
 
                 {/* Indicateur de lien */}
                 <div className="flex items-center mt-3 sm:mt-4">
-                  <span className="text-xs text-blue-600 group-hover:text-blue-700 font-medium">Lire l'article</span>
+                  <span className="text-xs text-blue-600 group-hover:text-blue-700 font-medium">{t('testimonials.read_article')}</span>
                   <ExternalLink className="w-3 h-3 ml-1 text-blue-600 group-hover:text-blue-700 group-hover:translate-x-1 transition-all duration-300" />
                 </div>
               </a>
