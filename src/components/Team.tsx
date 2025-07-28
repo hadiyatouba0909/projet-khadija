@@ -49,7 +49,7 @@ const Team = () => {
       icon: Users
     },
     {
-      name: "Dr. Faty Gata Ba",
+      name: "Dr. Fatimata Ba",
       specialty: "Cardiologue",
       diplôme: "Diplôme de spécialité en cardiologie",
       image: "/Background image box (2).png",
