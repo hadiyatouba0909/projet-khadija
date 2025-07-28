@@ -114,9 +114,9 @@ const Footer = () => {
                 <div>
                   <div className="mb-3">
                     <img 
-                      src="/ogoMIMAP by Toutou [Récupéré]_Plan de travail 1.png" 
+                      src="/Logo MIMAP Horizontal second-04.png" 
                       alt="MIMAP Logo" 
-                      className="h-14 w-64 bg-white rounded-full sm:h-16 w-auto object-contain "
+                      className="h-14 w-64 rounded-full sm:h-16 w-auto object-contain "
                       onError={(e) => {
                         const img = e.target as HTMLImageElement;
                         img.style.display = 'none';
@@ -127,8 +127,7 @@ const Footer = () => {
                     />
                   </div>
                 </div>
-              </div>
-              
+              </div>             
               <p className="text-blue-100 mb-4 sm:mb-6 leading-relaxed text-sm">
                 Cabinet médical spécialisé en médecine familiale, pédiatrie et santé au travail.
               </p>
