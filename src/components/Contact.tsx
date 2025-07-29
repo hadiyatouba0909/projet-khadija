@@ -5,7 +5,6 @@ import { useTranslation } from 'react-i18next';
 const Contact = () => {
   const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
-
   // Observer pour les animations
   useEffect(() => {
     const observer = new IntersectionObserver(

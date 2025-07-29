@@ -26,14 +26,14 @@ const resources = {
       },
       hero: {
         title: "Votre santé, notre priorité",
-        subtitle: "MIMAP vous accompagne dans la médecine préventive, la santé familiale, la santé au travail et les formations en premiers secours et RCR/CPR.",
+        subtitle: "MIMAP vous accompagne dans la médecine préventive, la santé familiale, la santé au travail et les formations en premiers secours et RCR/CPR (réanimation cardio-pulmonaire).",
         discover_button: "Découvrir nos services",
         call_button: "Nous appeler"
       },
       about: {
         who_we_are: {
           title: "Qui sommes-nous ?",
-          content: "MIMAP est un groupe de médecins généralistes et spécialistes dédiés à la médecine préventive, la santé au travail et la formation certifiée en premiers secours et RCR/CPR (réanimation cardio-pulmonaire)."
+          content: "MIMAP est un groupe de médecins généralistes et spécialistes dédiés à la médecine préventive, la santé au travail et la formation certifiée en premiers secours et RCR/CPR(réanimation cardio-pulmonaire)."
         },
         our_mission: {
           title: "Notre Mission",
@@ -394,7 +394,7 @@ const resources = {
       },
       hero: {
         title: "Your health, our priority",
-        subtitle: "MIMAP supports you in preventive medicine, family health, occupational health and first aid and CPR training.",
+        subtitle: "MIMAP supports you in preventive medicine, family health, occupational health and first aid and CPR training (cardiopulmonary resuscitation).",
         discover_button: "Discover our services",
         call_button: "Call us"
       },
