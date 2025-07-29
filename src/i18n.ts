@@ -33,7 +33,7 @@ const resources = {
       about: {
         who_we_are: {
           title: "Qui sommes-nous ?",
-          content: "MIMAP est un groupe de médecins généralistes et spécialistes dédiés à la médecine préventive, la santé au travail et la formation certifiée en premiers secours et RCR/CPR (réanimation cardio-pulmonaire)."
+          content: "MIMAP est un groupe de médecins généralistes et spécialistes dédiés à la médecine préventive, la santé au travail et la formation certifiée en premiers secours et RCR/CPR(réanimation cardio-pulmonaire)."
         },
         our_mission: {
           title: "Notre Mission",

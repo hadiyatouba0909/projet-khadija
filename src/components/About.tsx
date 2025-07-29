@@ -137,7 +137,7 @@ const About = () => {
                   {slide.title}
                 </h3>
 
-                <p className="text-sm text-gray-600 leading-relaxed mb-4 group-hover:text-gray-700 transition-colors line-clamp-4">
+                <p className="text-sm text-gray-600 leading-relaxed mb-4 group-hover:text-gray-700 transition-colors line-clamp-6">
                   {slide.content}
                 </p>
               </div>
