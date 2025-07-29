@@ -95,9 +95,12 @@ const Header = () => {
     }
   };
 
+  // 🔧 CORRECTION: Fonction modifiée pour fermer aussi le menu mobile
   const handleLanguageChange = (langCode: SetStateAction<string>) => {
     setCurrentLanguage(langCode);
     setIsLanguageMenuOpen(false);
+    // 🔧 AJOUT: Fermer le menu mobile aussi
+    setIsMenuOpen(false);
     i18n.changeLanguage(langCode as string);
   };
 
@@ -115,11 +118,11 @@ const Header = () => {
           <div className="flex items-center space-x-6">
             <div className="flex items-center hover:text-blue-200 transition-colors cursor-pointer group">
               <Phone className="w-3 h-3 mr-2 group-hover:animate-bounce" />
-              <span>{t('contact_info.phone')}</span>
+              <span>+222 31244404 / +222 44794404</span>
             </div>
             <div className="flex items-center hover:text-blue-200 transition-colors cursor-pointer group">
               <Mail className="w-3 h-3 mr-2 group-hover:animate-bounce" />
-              <span>{t('contact_info.email')}</span>
+              <span>cabinetmimap@gmail.com</span>
             </div>
           </div>
 
@@ -128,14 +131,14 @@ const Header = () => {
             <div className="flex items-center space-x-2">
               <MapPin className="w-3 h-3" />
               <div className="text-xs">
-                <span className="font-medium">{t('contact_info.address')}</span>
+                <span className="font-medium">NOUAKCHOTT - Ilot K EXT 929</span>
               </div>
             </div>
 
             <div className="flex items-center space-x-2">
               <span>🕐</span>
               <div className="text-xs">
-                <span>{t('contact_info.hours')}</span>
+                <span>Lun-Ven 15h-22h • Sam 10h-17h</span>
               </div>
             </div>
           </div>
@@ -257,7 +260,7 @@ const Header = () => {
               {/* Menu langue mobile */}
               <div className="border-t border-gray-200 pt-4 mt-4">
                 <div className="px-4 py-2 text-sm font-medium text-gray-500 uppercase tracking-wide">
-                  {t('nav.language')}
+                  Langue
                 </div>
                 {languages.map((language) => (
                   <button
