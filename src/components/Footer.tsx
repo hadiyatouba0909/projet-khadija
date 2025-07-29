@@ -31,6 +31,11 @@ const Footer = () => {
       }
     };
   }, []);
+   const SnapchatIcon = ({ className }: { className?: string }) => (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 2.5c-4.142 0-7.5 3.358-7.5 7.5 0 2.011.792 3.834 2.085 5.18-.845.958-1.585 1.32-2.085 1.32-.193 0-.348.155-.348.348s.155.348.348.348c.5 0 1.24-.362 2.085-1.32C7.916 16.208 9.739 17 12 17s4.084-.792 5.415-2.124c.845.958 1.585 1.32 2.085 1.32.193 0 .348-.155.348-.348s-.155-.348-.348-.348c-.5 0-1.24-.362-2.085-1.32C18.708 13.834 19.5 12.011 19.5 10c0-4.142-3.358-7.5-7.5-7.5z" />
+    </svg>
+  );
 
   // Scroll to top functionality
   useEffect(() => {
@@ -94,6 +99,12 @@ const Footer = () => {
       url: "https://www.linkedin.com/company/cabinet-mimap-mauritania-internal-medecine-and-pediatrics/?viewAsMember=true",
       icon: Linkedin,
       color: "bg-blue-800 hover:bg-blue-900"
+    },
+    {
+      name: "Snapchat",
+      url: "https://t.snapchat.com/5mItTTcm",
+      icon: SnapchatIcon,
+      color: "bg-yellow-400 hover:bg-yellow-500"
     }
   ];
 

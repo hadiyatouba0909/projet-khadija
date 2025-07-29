@@ -33,7 +33,7 @@ const resources = {
       about: {
         who_we_are: {
           title: "Qui sommes-nous ?",
-          content: "MIMAP est un groupe de médecins généralistes et spécialistes dédiés à la médecine préventive, la santé au travail et la formation certifiée en premiers secours et RCR/CPR(réanimation cardio-pulmonaire)."
+          content: "MIMAP est un groupe de médecins généralistes et spécialistes dédiés à la médecine préventive, la santé au travail et la formation certifiée en premiers secours et RCR/CPR (réanimation cardio-pulmonaire)."
         },
         our_mission: {
           title: "Notre Mission",
@@ -954,7 +954,7 @@ const resources = {
         title: "المعرض",
         subtitle: "اكتشف منشآتنا وفريقنا وفعالياتنا من خلال معرضنا",
         photos_count: "صور",
-        see_more_facebook: "شاهد المزيد على فيسبوك",
+        see_more_facebook: "شاهد المزيد على Facebook",
         slide_counter: "من",
         gallery_items: {
           team_sos_diabetes: {
@@ -1069,7 +1069,7 @@ const resources = {
         badge: "الأخبار والمدونة",
         title: "الأخبار والمدونة",
         subtitle: "ابقوا على اطلاع بآخر أخبارنا وحملات التوعية والفعاليات",
-        see_on_facebook: "مشاهدة على فيسبوك",
+        see_on_facebook: "مشاهدة على Facebook",
         stay_connected: "ابقوا متصلين!",
         follow_us: "تابعونا على شبكات التواصل الاجتماعي لعدم تفويت أي من أخبارنا وفعالياتنا",
         news_items: {

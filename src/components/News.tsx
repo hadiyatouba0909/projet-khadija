@@ -50,6 +50,13 @@ const News = () => {
     };
   }, []);
 
+    // ✅ VRAIE icône Snapchat (fantôme)
+  const SnapchatIcon = ({ className }: { className?: string }) => (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 2.5c-4.142 0-7.5 3.358-7.5 7.5 0 2.011.792 3.834 2.085 5.18-.845.958-1.585 1.32-2.085 1.32-.193 0-.348.155-.348.348s.155.348.348.348c.5 0 1.24-.362 2.085-1.32C7.916 16.208 9.739 17 12 17s4.084-.792 5.415-2.124c.845.958 1.585 1.32 2.085 1.32.193 0 .348-.155.348-.348s-.155-.348-.348-.348c-.5 0-1.24-.362-2.085-1.32C18.708 13.834 19.5 12.011 19.5 10c0-4.142-3.358-7.5-7.5-7.5z" />
+    </svg>
+  );
+
   const socialLinks = [
     {
       name: "Facebook",
@@ -71,6 +78,13 @@ const News = () => {
       icon: Linkedin,
       color: "from-blue-700 to-blue-800",
       hoverColor: "hover:from-blue-800 hover:to-blue-900"
+    },
+    {
+      name: "Snapchat",
+      url: "https://t.snapchat.com/5mItTTcm",
+      icon: SnapchatIcon,
+      color: "from-yellow-400 to-yellow-500",
+      hoverColor: "hover:from-yellow-500 hover:to-yellow-600"
     }
   ];
 
@@ -157,7 +171,7 @@ const News = () => {
                     className={`inline-flex items-center bg-gradient-to-r ${item.gradient} text-white px-4 py-2 sm:px-6 sm:py-3 rounded-xl font-medium hover:shadow-lg transition-all duration-300 transform hover:scale-105 group/btn text-sm sm:text-base`}
                   >
                     <Facebook className="w-4 h-4 sm:w-5 sm:h-5 mr-2 group-hover/btn:animate-bounce" />
-                    <span className="hidden sm:inline">{t('news.see_on_facebook').replace('Facebook', '')}</span>Facebook
+                    <span className="hidden sm:inline">{t('news.see_on_facebook')}</span>
                     <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
                   </a>
                   
